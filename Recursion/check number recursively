@@ -1,0 +1,41 @@
+public class Solution {
+	
+	public static boolean checkNumber(int input[], int x) {
+		/* Your class should be named Solution
+		 * Don't write main().
+		 * Don't read input, it is passed as function argument.
+		 * Return output and don't print it.
+	 	 * Taking input and printing output is handled automatically.
+		*/
+		int n=input.length;
+		return checkwithindex(input,x,n-1);
+		
+	}
+	private static boolean checkwithindex(int input[], int x, int index) {
+		if (index < 0) {
+			return false; // Base case: reached the beginning of the array without finding x
+		}
+		
+		if (input[index] == x) {
+			return true; // Base case: found x at current index
+		}
+		
+		// Recursive case: check the rest of the array
+		return checkwithindex(input, x, index - 1);
+	}
+}
+
+
+Sample Input 1 :
+3
+9 8 10
+8
+Sample Output 1 :
+true
+Sample Input 2 :
+3
+9 8 10
+2
+Sample Output 2 :
+false
+
