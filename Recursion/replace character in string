@@ -1,25 +1,25 @@
 public class Solution {
 
-    public static String replaceCharacter(String input, char c1, char c2) {
+     public static String replaceCharacter(String input, char c1, char c2) {
         // Base case: If input string is empty, return an empty string
         if (input.length() == 0) {
             return "";
         }
 
-        // Recursive call to replace characters in the substring starting from index 1
-        String logic = replaceCharacter(input.substring(1), c1, c2);
+        // Get the first character of the input string
+        char firstChar = input.charAt(0);
 
-        // Check if the first character of input matches c1
-        if (input.charAt(0) == c1) {
-            // Replace c1 with c2 and concatenate with the result of recursive call
-            return c2 + logic;
-        } else {
-            // Keep the current character and concatenate with the result of recursive call
-            return input.charAt(0) + logic;
+        // Replace the character if it matches c1, otherwise keep it unchanged
+        if (firstChar == c1) {
+            firstChar = c2; // Replace c1 with c2
         }
-    }
 
-    
+        // Recursively process the rest of the input string (substring starting from index 1)
+        String restOfString = replaceCharacter(input.substring(1), c1, c2);
+
+        // Concatenate the modified first character with the rest of the string
+        return firstChar + restOfString;
+    }
 }
 
 Sample Input :
