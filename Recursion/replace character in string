@@ -1,0 +1,29 @@
+public class Solution {
+
+    public static String replaceCharacter(String input, char c1, char c2) {
+        // Base case: If input string is empty, return an empty string
+        if (input.length() == 0) {
+            return "";
+        }
+
+        // Recursive call to replace characters in the substring starting from index 1
+        String logic = replaceCharacter(input.substring(1), c1, c2);
+
+        // Check if the first character of input matches c1
+        if (input.charAt(0) == c1) {
+            // Replace c1 with c2 and concatenate with the result of recursive call
+            return c2 + logic;
+        } else {
+            // Keep the current character and concatenate with the result of recursive call
+            return input.charAt(0) + logic;
+        }
+    }
+
+    
+}
+
+Sample Input :
+abacd
+a x
+Sample Output :
+xbxcd
