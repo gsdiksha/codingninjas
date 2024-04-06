@@ -1,0 +1,34 @@
+public class Solution {
+    public static boolean isPalindrome(String str) {
+        // Call the recursive helper function with initial values
+        return logic(str, 0, str.length() - 1);
+    }
+
+    public static boolean logic(String str, int first, int last) {
+        // Base case: If first index crosses last index, it's a palindrome
+        if (first >= last) {
+            return true;
+        }
+        
+        // Check if characters at first and last indices are equal
+        if (str.charAt(first) != str.charAt(last)) {
+            return false; // Not a palindrome if characters don't match
+        }
+        
+        // Recursively check the substring excluding the first and last characters
+        return logic(str, first + 1, last - 1);
+    }
+}
+
+Sample Input 1:
+abbba
+Sample Output 1:
+true
+Explanation Of Sample Input 1 :
+“abbba” is a palindrome
+Sample Input 2:
+abcd
+Sample Output 2:
+false
+Explanation Of Sample Input 2 :
+“abcd” is not a palindrome
