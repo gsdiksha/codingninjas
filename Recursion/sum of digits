@@ -1,0 +1,26 @@
+
+public class solution {
+
+	public static int sumOfDigits(int input){
+		// Write your code here
+        if(input<10){
+			return input;
+		}
+		int lastdigit = input %10;
+		int sum = 0;
+		sum = sum + lastdigit;
+		
+		// input = input/10;
+		int ans = sum + sumOfDigits(input/10);
+		return ans;
+	}
+}
+
+Sample Input 1 :
+12345
+Sample Output 1 :
+15
+Sample Input 2 :
+9
+Sample Output 2 :
+9
