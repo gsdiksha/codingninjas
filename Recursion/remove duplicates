@@ -1,0 +1,28 @@
+public class Solution {
+
+	public static String removeConsecutiveDuplicates(String s) {
+		 // Base case: if the string is empty or has only one character
+        if (s.isEmpty() || s.length() == 1) {
+            return s;
+        }
+
+        // Check if the first character is the same as the second character
+        if (s.charAt(0) == s.charAt(1)) {
+            // If consecutive characters are the same, skip the current character
+            return removeConsecutiveDuplicates(s.substring(1));
+        } else {
+            // If consecutive characters are different, keep the current character
+            return s.charAt(0) + removeConsecutiveDuplicates(s.substring(1));
+        }
+	}
+
+}
+
+Sample Input 1 :
+aabccba
+Sample Output 1 :
+abcba
+Sample Input 2 :
+xxxyyyzwwzzz
+Sample Output 2 :
+xyzwz
