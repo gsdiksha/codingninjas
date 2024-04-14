@@ -6,6 +6,41 @@ public class solution {
         if(input<10){
 			return input;
 		}
+		
+		// Extract the last digit (remainder when divided by 10)
+        int lastDigit = input % 10;
+
+        // Recursively sum the digits of the remaining number (input without the last digit)
+        int sumOfRemainingDigits = sumOfDigits(input / 10);
+
+        // Calculate the total sum of digits
+        int totalSum = lastDigit + sumOfRemainingDigits;
+
+        return totalSum;
+	}
+}
+
+
+public class solution {
+
+	public static int sumOfDigits(int input){
+		// Write your code here
+        if(input<10){
+			return input;
+		}
+		
+		return (input%10)+sumOfDigits(input/10);
+	}
+}
+
+
+public class solution {
+
+	public static int sumOfDigits(int input){
+		// Write your code here
+        if(input<10){
+			return input;
+		}
 		int lastdigit = input %10;
 		int sum = 0;
 		sum = sum + lastdigit;
