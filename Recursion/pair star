@@ -1,0 +1,30 @@
+
+public class solution {
+
+	// Return the updated string
+	public static String addStars(String s) {
+		// Write your code here
+        if(s.length()==1){
+			return s;
+		}
+
+		char firstchar = s.charAt(0);
+		String smalls = addStars(s.substring(1));
+		if(firstchar == smalls.charAt(0)){
+			return firstchar + "*" + smalls;
+		}
+		else{
+			return firstchar + smalls;
+		}
+	}
+}
+
+
+Sample Input 1 :
+hello
+Sample Output 1:
+hel*lo
+Sample Input 2 :
+aaaa
+Sample Output 2 :
+a*a*a*a
