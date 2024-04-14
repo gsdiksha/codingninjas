@@ -1,3 +1,5 @@
+//base case, logic, end result me current result add krk baki loop chlne do
+
 public class Solution {
      public static int sumn(int input[], int n){
         if(n==0){
