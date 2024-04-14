@@ -20,6 +20,32 @@ public class Solution {
     }
 }
 
+
+public class Solution {
+    public static boolean isPalindrome(String str) {
+        if (str == null || str.length() <= 1) {
+            return true; // Empty string or single character string is a palindrome
+        }
+        
+        // Write your code here.
+        int l=0;
+        int r=str.length()-1;
+
+        while(l<r){
+            char leftchar = str.charAt(l);
+            char rightchar = str.charAt(r);
+            if(leftchar!=rightchar){
+                return false;
+            }
+            else{
+                l++;
+                r--;
+            }
+        }
+        return true;
+    }
+}
+
 Sample Input 1:
 abbba
 Sample Output 1:
