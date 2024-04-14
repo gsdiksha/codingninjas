@@ -1,0 +1,4 @@
+1. base condition
+2. logic what will be happening
+3. result will have one logic + recursive calls(bcoz recursive calls ye bataenge ki baki me bhi same cheez krni h)
+and logic se jo output ana chahiye wo hmara original input ka hoga to use add krdo recursive calls me to final ans ajaega
