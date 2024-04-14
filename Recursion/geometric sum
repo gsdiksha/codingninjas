@@ -1,3 +1,6 @@
+//k ki value km hoti jaegi recursion me. aur ans jo h wo store krega to jese hi ans me logic + findGeometricSum(0) hoga mtlb ab use k ko 0 k liye call krna h jo ki base condition h hmari to wha se return 1 add hojaega ans me. qki 
+//ans = 1/2^3 + 1/2^2 + 1/2^1 + 1(yha aega wo return 1) to ans complete h
+
 import java.lang.Math;
 public class solution {
 
