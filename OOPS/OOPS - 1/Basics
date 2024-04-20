@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-
+//class student h aur usme name, rollnumber properties h uski
 public Class Student{
     String name;
     int rollNumber;
@@ -9,7 +9,8 @@ public Class Student{
 public Class StudentUse{
     public static void main(String[] args){
         //Scanner s= new Scanner(source)
-        Student s1= new Student();
+        Student s1= new Student();           //creating reference of the class that we have 
+        //System.out.println(s1);            yha address return hoga jo s1 ka h then fir s1 me value assign krenge
         Student s2= new Student();
         System.out.println(s1);
         s1.name="Manisha";
