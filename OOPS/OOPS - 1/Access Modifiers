@@ -1,0 +1,4 @@
+private   - same class
+default   - same class , anotherclass same package
+public    - same class , anotherclass same package , another class different package
+protected
