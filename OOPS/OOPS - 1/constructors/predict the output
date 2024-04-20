@@ -1,0 +1,29 @@
+Problem statement
+What will be the output of the following code?
+
+class Test 
+{ 
+    int a; 
+    int b; 
+    Test() 
+    {   
+        this(10, 20);   
+        System.out.print("constructor one "); 
+    } 
+    Test(int a, int b) 
+    { 
+        this.a = a; 
+        this.b = b; 
+        System.out.print("constructor two "); 
+    } 
+}
+class new_test{
+    public static void main(String[] args) 
+    { 
+        Test object = new Test(); 
+    } 
+} 
+
+
+ans - constructor two constructor one
+bcoz new_test me jb empty no arguments wala function call hua to wo fir ths(10,20) 2 argument wala call kra which is two and then one
