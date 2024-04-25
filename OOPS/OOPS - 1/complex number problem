@@ -1,0 +1,83 @@
+import java.util.Scanner;
+
+public class ComplexNumbers {
+//this was the code that I wrote
+    private int real;       // Real part of the complex number
+    private int imaginary;  // Imaginary part of the complex number
+
+    // Constructor to initialize a complex number with given real and imaginary parts
+    public ComplexNumbers(int real, int imaginary) {
+        this.real = real;
+        this.imaginary = imaginary;
+    }
+
+    // Method to perform complex number addition
+    public void plus(ComplexNumbers c2) {
+        this.real += c2.real;
+        this.imaginary += c2.imaginary;
+    }
+
+    // Method to perform complex number multiplication
+    public void multiply(ComplexNumbers c2) {
+        int newReal = (this.real * c2.real) - (this.imaginary * c2.imaginary);
+        int newImaginary = (this.real * c2.imaginary) + (this.imaginary * c2.real);
+        this.real = newReal;
+        this.imaginary = newImaginary;
+    }
+
+    // Method to print the complex number in the format "real + imaginary i"
+    public void print() {
+        System.out.println(this.real+" + i"+this.imaginary);
+    }
+
+    public static void main(String[] args) {
+        Scanner s = new Scanner(System.in);
+
+        // Read the real and imaginary parts for the first complex number
+        int real1 = s.nextInt();
+        int imaginary1 = s.nextInt();
+
+        // Read the real and imaginary parts for the second complex number
+        int real2 = s.nextInt();
+        int imaginary2 = s.nextInt();
+
+        // Create instances of ComplexNumbers for the two input complex numbers
+        ComplexNumbers c1 = new ComplexNumbers(real1, imaginary1);
+        ComplexNumbers c2 = new ComplexNumbers(real2, imaginary2);
+
+        // Read the choice for operation (1 for addition, 2 for multiplication)
+        int choice = s.nextInt();
+
+        // Perform the selected operation and print the result
+        if (choice == 1) {
+            // Addition operation
+            c1.plus(c2);
+            c1.print(); // Print the result of addition
+        } else if (choice == 2) {
+            // Multiplication operation
+            c1.multiply(c2);
+            c1.print(); // Print the result of multiplication
+        } else {
+            // Invalid choice
+            return;
+        }
+
+        // Close the scanner
+        s.close();
+    }
+}
+
+
+
+Sample Input 1 :
+4 5
+6 7
+1
+Sample Output 1 :
+10 + i12
+Sample Input 2 :
+4 5
+6 7
+2
+Sample Output 2 :
+-11 + i58
