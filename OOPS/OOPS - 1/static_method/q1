@@ -1,0 +1,24 @@
+Problem statement
+What will be the output of the following code?
+
+class Car{
+    static int year;
+    String company_name;
+}
+class new_Car {
+    public static void main (String[] args) {
+        Car c=new Car();        
+        Car.year=2018;              
+        c.company_name="KIA";
+        Car d=new Car();
+        System.out.print(d.year);
+    }
+}
+
+
+ans - 2018 
+Car.year is a static variable, and when Car.year = 2018; is executed, it sets the static variable year in the Car class to 2018.
+When Car d = new Car(); creates a new instance d of Car, it does not initialize year explicitly for this instance. Therefore, since year is a static variable and shared among all instances of Car, d.year will also have the value 2018 inherited from the class-level static variable.
+Output Explanation:
+
+Since d.year is accessing the static variable year from the Car class after it has been set to 2018, the output of System.out.print(d.year); will be 2018.
