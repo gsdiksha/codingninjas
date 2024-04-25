@@ -1,0 +1,26 @@
+Problem statement
+What is the purpose of the Polynomial class's constructor that takes an integer array as an argument?
+
+public class Polynomial {
+    private int[] coefficients;
+    public Polynomial(int[] coefficients) {
+        this.coefficients = coefficients;
+    }
+    public int[] getCoefficients() {
+        return coefficients;
+    }
+    public Polynomial add(Polynomial other) {
+        int maxLength = Math.max(coefficients.length, other.coefficients.length);
+        int[] resultCoefficients = new int[maxLength];
+        for (int i = 0; i < coefficients.length; i++) {
+            resultCoefficients[i] += coefficients[i];
+        }
+        for (int i = 0; i < other.coefficients.length; i++) {
+            resultCoefficients[i] += other.coefficients[i];
+        }
+        return new Polynomial(resultCoefficients);
+    }
+}
+
+
+ans - to set the coefficients of the polynomial
