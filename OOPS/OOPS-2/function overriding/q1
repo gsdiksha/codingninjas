@@ -31,3 +31,12 @@ class buy_car{
 
 
 ans - car
+In the provided code:
+
+The Vehicle class has a method print() which prints "vehicle".
+The Car class extends Vehicle and overrides the print() method to print "car".
+The Honda class extends Car and overrides the print() method to print "Honda".
+In the buy_car class, an instance of Car is created, and its print() method is called.
+Since the instance created in buy_car is of type Car, the overridden method print() from the Car class will be invoked.
+
+Therefore, the output will be: car
