@@ -1,0 +1,12 @@
+baseclass - vehicle
+subclass - car, bicycle
+
+vehicle{
+print;
+}
+
+car{
+printcar;
+}
+
+hmne print call kiya to sbse pehle to wo car me dekhega, and agr car me nhi mila to wo vehicle me jaega qki whi base class h ise function overriding kehte h
