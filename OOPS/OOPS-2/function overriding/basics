@@ -3,10 +3,13 @@ subclass - car, bicycle
 
 vehicle{
 print;
+color=red;
 }
 
 car{
 printcar;
+color=blue;
 }
 
 hmne print call kiya to sbse pehle to wo car me dekhega, and agr car me nhi mila to wo vehicle me jaega qki whi base class h ise function overriding kehte h
+ans - jb bhi hm color call krenge to wo vehicle me red h prr car me wo change hua h (override hua h) to finally blue hi print hoga
