@@ -1,0 +1,13 @@
+Problem statement
+Which variable(s) can the class person access in the following code?
+
+class person{
+    String name;
+    int weight;
+}
+class Student extends person{
+    int roll_number;
+    String school_name;
+}
+
+ans - name, weight
