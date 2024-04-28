@@ -1,0 +1,29 @@
+Problem statement
+What Is The Output
+
+All classes are in same package.
+
+class Car {
+    private int seats;
+    private int speed;
+
+    public Car() {
+        System.out.print("This Is Car ");
+    }
+}
+
+class Audi extends Car {
+    Audi() {
+        super();
+        System.out.print("This Is Audi ");
+    }
+}
+
+class Main {
+    public static void main(String args[]) {
+        Audi a = new Audi();
+    }
+}
+
+ans - this is car this is audi
+look for q4 
