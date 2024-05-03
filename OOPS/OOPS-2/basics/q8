@@ -1,0 +1,55 @@
+Problem statement
+What will be the output of the following code?
+
+class ExceptionThrown 
+{ 
+    static int divideByZero(int a, int b){ 
+        int i = a/b;  
+        return i; 
+    } 
+    static int computeDivision(int a, int b) { 
+        int res =0; 
+        try
+        { 
+          res = divideByZero(a,b); 
+        } 
+        catch(NumberFormatException ex) 
+        { 
+           System.out.println("Exception occured");  
+        } 
+        return res; 
+    } 
+    public static void main(String args[]){ 
+        int a = 1; 
+        int b = 1; 
+        int i=0;  
+        try
+        { 
+             i = computeDivision(a,b); 
+
+        } 
+        catch(ArithmeticException ex) 
+        { 
+            System.out.println(ex.getMessage()); 
+        }
+        System.out.print(i);
+    } 
+} 
+
+ans - 1
+Explanation:
+
+The main method initializes variables a and b to 1.
+It then calls the computeDivision method with a and b.
+In the computeDivision method, divideByZero method is called.
+In the divideByZero method, integer division is performed (a/b), which is valid and results in 1.
+This result is returned to the computeDivision method.
+Since there is no NumberFormatException thrown in the try block of computeDivision, the catch block is not executed, and the result (1) is returned.
+This result (1) is then assigned to variable i in the main method.
+Finally, the value of i (which is 1) is printed.
+There's no division by zero or any other arithmetic exception occurring, so the catch block for ArithmeticException is not executed.
+
+
+
+
+
