@@ -1,0 +1,11 @@
+Problem statement
+Select the valid statement(s) on the basis of following code.
+
+Both classes are in same package.
+
+class Vehicle {}
+class Car extends Vehicle {}
+
+ans - vehicle obj = new vehicle();
+      car obj = new car();
+      vehicle obj = new car();
