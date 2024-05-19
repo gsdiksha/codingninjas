@@ -1,0 +1,9 @@
+ArrayList<String> list = new ArrayList<String>() ;
+list.add( "Ant" );
+list.add( "Bat" );
+list.add( "Car" );
+list.add( "Door" );
+list.add( "Euro" );
+Which of the following statements will replace the element "Car" with "Bus" ?
+
+ans - list.set(2,"Bus");
