@@ -14,6 +14,11 @@ public  class LinkedListUse{
 
  public static void print(Node<Integer> head){
     Node<Integer> temp = head;
+//head me reference address h, temp me ajaega whi reference
+//temp(20) ka address lets say 100 h, and temp.next=101(which is not empty)
+//to temp(10) ka address 101, temp.next=null
+//yha loop break hoga
+//in short har node ka address hota h and head me head.next ka address hota h
 
     while(temp != null){
         System.out.print(temp.data +" ");
