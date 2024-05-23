@@ -1,0 +1,50 @@
+1. last node delete kra ja skta h
+2. traverse kro and dekho agr pos =0 and length of LL se bda h to delete nhi hoga
+
+
+/****************************************************************
+
+	Following is the Node class already written for the Linked List
+
+	class  Node<T> {
+    	T data;
+    	 Node<T> next;
+    
+    	public  Node(T data) {
+        	this.data = data;
+    	}
+	}
+
+*****************************************************************/
+
+public class Solution {
+    public static Node<Integer> deleteNode(Node<Integer> head, int pos) {
+        // If the list is empty or position is negative
+        if (head == null || pos < 0) {
+            return head;
+        }
+        
+        // If the node to be deleted is the head
+        if (pos == 0) {
+            return head.next;
+        }
+        
+        // Find the node just before the one to be deleted
+        Node<Integer> prev = head;
+        int count = 0;
+        while (count < pos - 1 && prev != null) {
+            count++;
+            prev = prev.next;
+        }
+        
+        // If prev is null or prev.next is null, position is out of bounds
+        if (prev == null || prev.next == null) {
+            return head;
+        }
+        
+        // Delete the node at pos
+        prev.next = prev.next.next;
+        
+        return head;
+    }
+}
