@@ -1,5 +1,9 @@
-for searching an element in LL - O(n)
+1.for searching an element in LL - O(n)
 
-Consider the Singly linked list having n elements. What will be the time taken to add an node at the end of linked list if is initially pointing to first node of the list.
+2.Consider the Singly linked list having n elements. What will be the time taken to add an node at the end of linked list if is initially pointing to first node of the list.
 
 That is only head is given to you.  - O(n)
+
+3. There is reference (or pointer) to first Node of the Linked List, then time required to insert element to second position is __________.
+
+Indexing starts from 0.  - O(1)
