@@ -31,8 +31,11 @@ public class Solution {
         if(head==null || head.next==null){
             return head;
         }
-        Node<Integer> tail = head.next;
         Node<Integer> smallhead = reverseRec(head.next);
+        Node<Integer> tail = smallhead;
+        while(tail.next!=null){
+            tail = tail.next;
+        }
         tail.next = head;
         head.next = null;
         return smallhead;
