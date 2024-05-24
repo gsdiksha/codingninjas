@@ -1,0 +1,41 @@
+make before break rule follow krte hue
+jese hi recursion call hoga wo second element se tail tk ki vale hold krega to pehle hi head.next ki value hold krk rkhlo
+then uska next me head pass krwado head ka next null krdo ab bss wo recursion call krdo qki
+recursion call wese hi last se second last tk dega second last se hmne manually hanle krhi liya tha
+ex- 1,2,3,4,5
+
+tail = 2 store krliya
+recursion call ne 5,4,3,2 de diya
+2.next = 1
+1.next = null return recurive call - 5,4,3,2,1,null
+
+/*
+
+    Following is the Node class already written for the Linked List
+
+    class Node<T> {
+        T data;
+        Node<T> next;
+    
+        public Node(T data) {
+            this.data = data;
+        }
+    }
+
+*/
+
+public class Solution {
+
+	public static Node<Integer> reverseRec(Node<Integer> head) {
+		//Your code goes here
+        if(head==null || head.next==null){
+            return head;
+        }
+        Node<Integer> tail = head.next;
+        Node<Integer> smallhead = reverseRec(head.next);
+        tail.next = head;
+        head.next = null;
+        return smallhead;
+	}
+
+}
