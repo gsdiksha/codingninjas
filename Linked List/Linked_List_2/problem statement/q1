@@ -1,0 +1,12 @@
+What does the following function do?
+
+void fun(Node head)
+{
+  if(head == null)
+    return;
+
+   fun(head.next);
+   System.out.print( head.data);
+}
+
+ans - print all nodes of ll in reverse order
