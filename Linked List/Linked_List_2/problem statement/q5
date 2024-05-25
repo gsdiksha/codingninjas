@@ -1,0 +1,10 @@
+Problem statement
+Given an unsorted circular linked list, suppose you have reference (or pointer) to its head node only, which of the following operation can be implemented in O(1) time if no overwriting of nodes data is allowed.
+
+i) Insertion at the front of the linked list
+ii) Insertion at the end of the linked list
+iii) Deletion of the last node of the linked list
+iv) Deletion of the front node of the linked list
+ans - none
+Based on the analysis, none of the operations (i, ii, iii, or iv) can be performed in 𝑂(1)
+O(1) time given the constraints that we only have a reference to the head node and no overwriting of nodes' data is allowed.
