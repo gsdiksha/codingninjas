@@ -1,0 +1,71 @@
+2 sorted ll h to hme 4 variables chahiye t1,t2 dono me alg alg traverse honge head sirf stating pr rhega tail common variable h 
+ab sbse pehle pehla node check krne k liye check for h1>h2 then pehla node bhi tail krdiya aur har move k baad t1 ya t2 move honge 
+first node milne k baad while loop chlega jo dono k common check krenge to wha tail move hota jaega then end me jo bhi list me bache hue h wo already sorted elements h to bss us list ko tail.nxt krdo
+return head hme pura sorted dedega
+
+
+/*
+
+    Following is the Node class already written for the Linked List
+
+    class Node<T> {
+        T data;
+        Node<T> next;
+    
+        public Node(T data) {
+            this.data = data;
+        }
+    }
+
+*/
+
+public class Solution {
+    
+    public static Node<Integer> mergeTwoSorteds(Node<Integer> head1, Node<Integer> head2) {
+        //Your code goes here
+
+        if(head1==null){
+            return head2;
+        }
+        if(head2==null){
+            return head1;
+        }
+
+        Node<Integer> t1 = head1;
+        Node<Integer> t2 = head2;
+        Node<Integer> head = null, tail = null;
+        
+        if(t1.data<t2.data){
+            head = t1;
+            tail = t1;
+            t1 = t1.next;
+        }
+        else{
+            head = t2;
+            tail = t2;
+            t2 = t2.next;
+        }
+
+        while(t1!=null && t2!=null){
+            if(t1.data<t2.data){
+                tail.next = t1;
+                tail = t1;
+                t1 = t1.next;
+            }
+            else{
+                tail.next = t2;
+                tail = t2;
+                t2 = t2.next;
+            }
+        }
+        //one list is completed
+        if(t1!=null){
+            tail.next=t1;
+        }
+        if(t2!=null){
+            tail.next = t2;
+        }
+        return head;
+    }
+
+}
