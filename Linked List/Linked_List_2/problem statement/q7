@@ -1,0 +1,2 @@
+The concatenation of two lists is to be performed in O(1) time. Which of the following implementations of a list should be used?
+ans - circular doubly ll
