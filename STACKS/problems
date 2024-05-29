@@ -1,0 +1,5 @@
+1.Suppose we have 10 chairs(numbered 1 to 10 from top to bottom) placed on top of each other, now we remove the top 5 chairs and from the remaining 5 ,we again remove 2 chairs and place the previous 5 chairs back. Which numbered chair is at 6th position from the bottom?
+ans - 3
+
+2. What method is used in implementation of stacks?
+ans - first in first out
