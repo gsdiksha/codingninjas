@@ -25,3 +25,7 @@ ans - 10
 
 5. What should be the return type of size function in stack?
 ans - int
+
+6. Which of the following statement(s) about stack data structure is/are NOT correct?
+ans - stack is fifo, new node can be inserted from both ends.
+correct - stack can be used using Linked list, new node can only be added at the top od stack
