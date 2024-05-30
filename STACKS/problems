@@ -3,3 +3,25 @@ ans - 3
 
 2. What method is used in implementation of stacks?
 ans - last in first out
+
+3. Given an empty Stack and we perform following functions on the stack:
+
+1. push(5)
+2. push(3)
+3. push(4)
+4. pop()
+5 push(2)
+What is the size of stack now?
+ans - 3
+
+4. What would be the sum of elements of Stack after performing following functions:
+
+1. push(5)
+2. push(3)
+3. push(4)
+4. pop()
+5. push(2)
+ans - 10
+
+5. What should be the return type of size function in stack?
+ans - int
