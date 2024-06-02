@@ -1,0 +1,15 @@
+Consider the following pseudo-code that uses a Stack:
+
+declare a stack of characters
+while ( there are more characters in the word to read )
+{
+   read a character
+   push the character on the stack
+}
+while ( the stack is not empty )
+{
+  pop a character off the stack
+  write the character to the screen
+}
+What will be the output for "codingninjas"?
+ans - sajningnidoc
