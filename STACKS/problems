@@ -45,3 +45,25 @@ ans - none(push,pop,isempty)
 8. push(9)
 9. print(size())  //to print the size of stack
 ans - stackfullexception at line 8
+
+9. What would be the output for the following functions (pop and size means printing also).
+
+Note: No StackFullException occurs.
+
+push(1) 
+push(2)
+push(3)
+size()
+pop
+push(8)
+pop
+pop
+pop 
+ans - 3 3 8 2 1
+
+10. What should be the sequence of push and pop to get the following output (pop means deleting and printing the deleted element) :
+
+5 4 6 
+ans - a. push(4) push(5) pop pop push(6)
+      b. push(6,4,5) pop pop pop
+      c. push(5) pop push(4) pop push(6) pop
