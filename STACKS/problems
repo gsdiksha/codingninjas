@@ -75,6 +75,14 @@ From 6 to 12
 From 12 to 24
 From 24 to 48
 
+12. Which of the following is true about linked list implementation of stack?
+
+(A) In push operation, if new nodes are inserted at the beginning of linked list, then in pop operation, nodes must be removed from end.
+(B) In push operation, if new nodes are inserted at the end, then in pop operation, nodes must be removed from the beginning.
+ans - none
+
+13. What would be the time complexity of the push and pop operations of the stack implemented using linked list (Assuming stack is implemented efficiently)?
+ans - O(1) for both 
 12. What is the time complexity of doublecapacity function of stack?
 
 (n is the size of previous array).
