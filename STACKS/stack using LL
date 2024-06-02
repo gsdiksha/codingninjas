@@ -1,0 +1,74 @@
+
+/*
+    Following is the structure of the node class for a Singly Linked List
+
+    class Node {
+        int data;
+        Node next;
+
+        public Node(int data) {
+            this.data = data;
+            this.next = null;
+        }
+
+    }
+
+*/
+//START
+public class Stack {
+
+    //Define the data members
+    Node head;
+    // Node temp;
+    int size;
+
+    public Stack() {
+        head = null;
+        size = 0;
+        //Implement the Constructor
+    }
+
+
+
+    /*----------------- Public Functions of Stack -----------------*/
+
+
+    public int getSize() { 
+        //Implement the getSize() function
+        return size;
+    }
+
+    public boolean isEmpty() {
+        //Implement the isEmpty() function
+        return head==null;
+    }
+
+    public void push(int element) {
+        //Implement the push(element) function
+        Node temp = new Node(element);
+        temp.next = head;
+        head = temp;
+        size++;
+        //push krne k liye hm pehle ek temp bnalenge jisme data hoga aur use add kr rhe honge peeche, to temp.next = head(which is null)
+        //isse O(1) me hm sare operations kr skte h
+        //end me head update krdo qki head hi sare operation handle krega and size bdado
+    }
+
+    public int pop() {
+        //Implement the pop() function
+        if(head==null) return -1;
+        int topdata = head.data;
+        head = head.next;
+        size--;
+        return topdata;
+        //isme edge condition test krlo pehle
+        //then head ka data ek variable me store krlo qki pop hone k baad yhi value return krni h
+        //bss head ka next se kaam hojaega and size km krdo
+    }
+
+    public int top() {
+        //Implement the top() function
+        if(head == null) return -1;
+        return head.data;
+    }
+}
