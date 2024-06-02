@@ -29,3 +29,19 @@ ans - int
 6. Which of the following statement(s) about stack data structure is/are NOT correct?
 ans - stack is fifo, new node can be inserted from both ends.
 correct - stack can be used using Linked list, new node can only be added at the top od stack
+
+7. Which of the following operation take worst case i.e. linear time (O(n)) in the array implementation of stack?
+ans - none(push,pop,isempty)
+
+8. What would be the output for the following functions if the size of array used in stack is 5 ?
+
+1. push(5)
+2. push(4)
+3. push(3)
+4. push (2)
+5. pop()
+6. push(6)
+7. push(8)
+8. push(9)
+9. print(size())  //to print the size of stack
+ans - stackfullexception at line 8
