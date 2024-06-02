@@ -67,3 +67,15 @@ ans - 3 3 8 2 1
 ans - a. push(4) push(5) pop pop push(6)
       b. push(6,4,5) pop pop pop
       c. push(5) pop push(4) pop push(6) pop
+
+11. If initially the size of array of stack is 3,and we need to input 34 elements. How many times the doublecapacity function would be called?
+ans - 4
+    From 3 to 6
+From 6 to 12
+From 12 to 24
+From 24 to 48
+
+12. What is the time complexity of doublecapacity function of stack?
+
+(n is the size of previous array).
+ans - O(n)
