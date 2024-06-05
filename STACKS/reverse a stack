@@ -1,0 +1,33 @@
+stack - 1 2 3 4 5     empty -
+hold - 5(topmost element) and pop it
+stack - 4 3 2 1       empty -            use recursion on leftover stack elements(reversed but one left)
+stack -               empty - 1 2 3 4    now push stack elements into empty one jo ki reverse bhi krdega (ab original condition)
+stack - 5, 4 3 2 1    empty -            ab push the hold one into stack and then push empty k sare into stack(reversed as expected)
+
+
+import java.util.*;
+public class Solution {
+
+	public static void reverseStack(Stack<Integer> input, Stack<Integer> extra) {
+		//Your code goes here
+        if(input.size()<=1){
+			return;
+		}
+
+		int hold = input.peek();
+		input.pop();
+		reverseStack(input,extra);
+		while(!input.isEmpty()){
+			int temp=input.peek();
+			input.pop();
+			extra.push(temp);
+		}
+		input.push(hold);
+		while(!extra.isEmpty()){
+			int temp1=extra.peek();
+			extra.pop();
+			input.push(temp1);
+		}
+		// return input;
+	}
+}
