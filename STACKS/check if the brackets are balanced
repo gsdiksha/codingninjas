@@ -1,0 +1,46 @@
+
+1. sbse pehle to ye jo bhi string h uska '(' stack me push kro 
+2. then jese hi ')' aya to check kro ki stack empty to nhi h agr empty h to whi false return krdo qki yha pehle openning-closing aega direct closing a hi nhi skta
+3. ab ')' mila hme, then stack me check kro ki stack ka top '(' h ya nhi agr h to current ko pop krdo wrna return false qki fir ye balanced nhi h 
+4. end me agr stack empty hota h to true wrna false
+sample - (()()())
+stack -  ((      - push kra starting k do
+         (()
+         (       - third element check kiya ek bracket complete hua to pop krdiya top and left with only one
+         ((      - fourth element add hua
+         (()
+         (       - when checked fifth tb bracket bna to top element pop
+         ((      - sixth element wapas add hua
+         (()
+         (       - seventh ne bracket complete kiya to top element pop 
+         ()
+         empty   - eighth element ne bracket complete kiya to pop
+
+import java.util.*;
+public class Solution {
+
+    public static boolean isBalanced(String expression) {
+        //Your code goes here
+        Stack<Character> stack = new Stack<Character>();
+        for(int j=0;j<expression.length();j++){
+            char i = expression.charAt(j);
+            if(i=='('){
+                stack.push(i);
+            }
+            else if(i==')'){
+                if(stack.isEmpty()){
+                    return false;
+                }
+                else{
+                if(stack.peek()!='('){
+                    return false;
+                }
+                else{
+                    stack.pop();
+                }
+                }
+            }
+        }
+        return stack.isEmpty();
+    }
+}
