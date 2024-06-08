@@ -1,0 +1,36 @@
+//recursion se reverse easily hojata h to pehle queue ka har front element store krte jao aur recursion call krte rho
+//jese hi recursion khtm hoga hamare pass har call ka stored values h aur wo last call se first call tk traverse krega to ye reverse krdega
+//q - 1,2,3,4,5
+//temp=1, recursion call-2,3,4,5
+//temp=2, recursion call-3,4,5
+//temp=3, recursion call-4,5
+//temp=4, recursion call-5
+//temp=5, recursion call-null
+//recursion ends
+//now add temp in 1, jo ki last se add hona start hoga
+//q-5,4,3,2,1
+
+
+import java.util.LinkedList;
+import java.util.Queue;
+
+
+public class Solution {
+
+	public static void reverseQueue(Queue<Integer> input) {
+		//Your code goes here
+		// while(!input.isEmpty()){
+		// 	input.dequeue();
+		// 	reverseQueue(input);
+		// }
+    
+		if(input.size()==0 || input.size()==1){
+			return;
+		}
+
+		int temp = input.remove();
+		reverseQueue(input);
+		input.add(temp);
+	}
+
+}
