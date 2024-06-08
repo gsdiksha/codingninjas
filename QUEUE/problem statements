@@ -1,0 +1,8 @@
+1. In optimized linked list implementation of a queue, where does a new element be inserted?
+ans - at the tail of the LL
+
+2. If the elements “p”, “q”, “r” and “s” are placed in a queue and are deleted one at a time, in what order will they be removed?
+ans - pqrs
+
+3. A queue is a ?
+ans - FIFO(first in first out)
