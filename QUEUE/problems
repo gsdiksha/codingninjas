@@ -1,0 +1,154 @@
+1. Problem statement
+Consider the following pseudo code. Assume that IntQueue is an integer queue. What does the function fun do?
+
+void fun(int n)
+{
+    IntQueue q = new IntQueue();
+    q.enqueue(0);
+    q.enqueue(1);
+    for (int i = 0; i < n; i++)
+    {
+        int a = q.dequeue();
+        int b = q.dequeue();
+        q.enqueue(b);
+        q.enqueue(a + b);
+        System.out.print(a);
+    }
+}
+
+ans - print first n fibonacci numbers
+To understand what the function fun does, let's analyze the pseudo code step-by-step:
+
+Initialization:
+
+IntQueue q = new IntQueue();: A new queue q is created.
+q.enqueue(0);: The integer 0 is enqueued into the queue.
+q.enqueue(1);: The integer 1 is enqueued into the queue.
+At this point, the queue q contains: 
+0
+,
+1
+0,1
+
+For loop:
+
+The loop runs n times.
+Within each iteration of the loop:
+int a = q.dequeue();: The front element of the queue is dequeued and assigned to a.
+int b = q.dequeue();: The next element of the queue is dequeued and assigned to b.
+q.enqueue(b);: The value of b is enqueued back into the queue.
+q.enqueue(a + b);: The sum of a and b is enqueued into the queue.
+System.out.print(a);: The value of a is printed.
+Now, let's see how this behaves by simulating the operations of the function for several iterations:
+
+Iteration 1 (i = 0):
+Initial queue: 
+0
+,
+1
+0,1
+a = q.dequeue(); → a = 0, queue becomes: 
+1
+1
+b = q.dequeue(); → b = 1, queue becomes: 
+q.enqueue(b); → queue becomes: 
+1
+1
+q.enqueue(a + b); → queue becomes: 
+1
+,
+1
+1,1
+System.out.print(a); → prints: 0
+Iteration 2 (i = 1):
+Initial queue: 
+1
+,
+1
+1,1
+a = q.dequeue(); → a = 1, queue becomes: 
+1
+1
+b = q.dequeue(); → b = 1, queue becomes: 
+q.enqueue(b); → queue becomes: 
+1
+1
+q.enqueue(a + b); → queue becomes: 
+1
+,
+2
+1,2
+System.out.print(a); → prints: 1
+Iteration 3 (i = 2):
+Initial queue: 
+1
+,
+2
+1,2
+a = q.dequeue(); → a = 1, queue becomes: 
+2
+2
+b = q.dequeue(); → b = 2, queue becomes: 
+q.enqueue(b); → queue becomes: 
+2
+2
+q.enqueue(a + b); → queue becomes: 
+2
+,
+3
+2,3
+System.out.print(a); → prints: 1
+Iteration 4 (i = 3):
+Initial queue: 
+2
+,
+3
+2,3
+a = q.dequeue(); → a = 2, queue becomes: 
+3
+3
+b = q.dequeue(); → b = 3, queue becomes: 
+q.enqueue(b); → queue becomes: 
+3
+3
+q.enqueue(a + b); → queue becomes: 
+3
+,
+5
+3,5
+System.out.print(a); → prints: 2
+Iteration 5 (i = 4):
+Initial queue: 
+3
+,
+5
+3,5
+a = q.dequeue(); → a = 3, queue becomes: 
+5
+5
+b = q.dequeue(); → b = 5, queue becomes: 
+q.enqueue(b); → queue becomes: 
+5
+5
+q.enqueue(a + b); → queue becomes: 
+5
+,
+8
+5,8
+System.out.print(a); → prints: 3
+General Pattern:
+Each iteration prints the next number in the Fibonacci sequence starting from 0, 1, 1, 2, 3, ...
+
+The sequence of values enqueued and dequeued follows the Fibonacci sequence:
+
+The queue initially starts with 
+0
+,
+1
+0,1
+Each step processes two numbers, prints the first, and enqueues the second and their sum back into the queue.
+Thus, the function fun(n) prints the first n Fibonacci numbers, starting from 0. The output is:
+
+Copy code
+0 1 1 2 3 5 8 13 21 ...
+where each number is printed without spaces.
