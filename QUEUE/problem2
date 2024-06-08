@@ -1,0 +1,152 @@
+Problem statement
+Suppose you are given an implementation of a queue of integers. The operations that can be performed on the queue are:
+
+i. isEmpty (Q) — returns true if the queue is empty, false otherwise.
+
+ii. delete (Q) — deletes the element at the front of the queue and returns its value.
+
+iii. insert (Q, i) — inserts the integer i at the rear of the queue.
+Consider the following function:
+
+void f (queue Q) { 
+   int i ; 
+   if (!isEmpty(Q)) { 
+   i = delete(Q); 
+   f(Q); 
+   insert(Q, i); 
+   } 
+}
+
+ans - reverse the elements of queue
+To understand what the function f does, let's analyze it step-by-step with the given operations on the queue:
+
+Function Definition:
+
+The function f takes a queue Q as an argument.
+If the queue Q is not empty (!isEmpty(Q)), it performs the following steps:
+Deletes the front element of the queue and assigns it to i.
+Recursively calls itself with the modified queue Q.
+Inserts the value i back at the rear of the queue.
+Behavior Analysis:
+
+The function continues to delete elements from the front of the queue and makes recursive calls until the queue becomes empty.
+Once the queue is empty, the base case (isEmpty(Q) is true) is reached, and the recursion starts to unwind.
+During the unwinding of the recursion, each deleted element is reinserted at the rear of the queue in the reverse order of deletion.
+Step-by-Step Example
+Let's walk through an example to see how the function works:
+
+Initial Queue: 
+1
+,
+2
+,
+3
+,
+4
+1,2,3,4
+
+First Call:
+
+!isEmpty(Q) is true.
+i = delete(Q); → i = 1, queue becomes 
+2
+,
+3
+,
+4
+2,3,4.
+f(Q); is called with 
+2
+,
+3
+,
+4
+2,3,4.
+Second Call:
+
+!isEmpty(Q) is true.
+i = delete(Q); → i = 2, queue becomes 
+3
+,
+4
+3,4.
+f(Q); is called with 
+3
+,
+4
+3,4.
+Third Call:
+
+!isEmpty(Q) is true.
+i = delete(Q); → i = 3, queue becomes 
+4
+4.
+f(Q); is called with 
+4
+4.
+Fourth Call:
+
+!isEmpty(Q) is true.
+i = delete(Q); → i = 4, queue becomes 
+.
+f(Q); is called with 
+.
+Fifth Call:
+
+isEmpty(Q) is true.
+This is the base case, so the function returns without doing anything.
+Now, the recursion starts to unwind:
+
+Fourth Call Unwinds:
+
+insert(Q, 4); → queue becomes 
+4
+4.
+Third Call Unwinds:
+
+insert(Q, 3); → queue becomes 
+4
+,
+3
+4,3.
+Second Call Unwinds:
+
+insert(Q, 2); → queue becomes 
+4
+,
+3
+,
+2
+4,3,2.
+First Call Unwinds:
+
+insert(Q, 1); → queue becomes 
+4
+,
+3
+,
+2
+,
+1
+4,3,2,1.
+Summary
+The function f takes a queue and recursively deletes all elements, then reinserts them in the reverse order. Essentially, it reverses the order of elements in the queue.
+
+Initial Queue: 
+1
+,
+2
+,
+3
+,
+4
+1,2,3,4
+Final Queue after f(Q): 
+4
+,
+3
+,
+2
+,
+1
+4,3,2,1
