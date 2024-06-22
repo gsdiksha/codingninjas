@@ -1,0 +1,59 @@
+level wise print mtlb pehle root the uska left then right
+root-left-right
+so code me node k form me input diya hua h jo root h ab use check kro ki null h ki nhi - base condition, null nikla to whi se return
+wrna queue banao nodes ka and usme root ko add krdo
+ab queue me check kro ki empty to nhi h then queue ka starting node ko front me store krlo, agr yaha pr node nhi lenge aur sirf data store krenge to galat hoga qki pura sawal nodes pr chlra h
+front ko pop krdo queue se and print krdo with given format
+is front k left aur right pt check maro ki agr null nahi h to queue me add kro (ise queue me add isliye kr rhe h qki isi ki help se isk child ko handle krpaenge )
+to ese agr null nahi h to gievn format me value print krado left ya right ki ya fir -1 
+har if else  baad println rkhna qki hme har next line me chahiye values har node ki.
+
+/*
+	
+	Following is the structure used to represent the Binary Tree Node
+
+	class BinaryTreeNode<T> {
+		T data;
+		BinaryTreeNode<T> left;
+		BinaryTreeNode<T> right;
+
+		public BinaryTreeNode(T data) {
+			this.data = data;
+			this.left = null;
+			this.right = null;
+		}
+	}
+
+*/
+import java.util.*;
+public class Solution {
+
+	public static void printLevelWise(BinaryTreeNode<Integer> root) {
+		//Your code goes here
+		if(root==null){
+			return;
+		}
+		Queue<BinaryTreeNode<Integer>> nodesToPrint=new LinkedList<BinaryTreeNode<Integer>>();
+		nodesToPrint.add(root);
+		while(!nodesToPrint.isEmpty()){
+			BinaryTreeNode<Integer> front = nodesToPrint.poll();
+			System.out.print(front.data + ":");
+			if(front.left!=null){
+				nodesToPrint.add(front.left);
+				System.out.print("L:" + front.left.data);
+			}
+			else{
+				System.out.print("L:-1");
+			}
+			if(front.right!=null){
+				nodesToPrint.add(front.right);
+				System.out.print(",R:" + front.right.data);
+			}
+			else{
+				System.out.print(",R:-1");
+			}
+			System.out.println();
+		}
+	}
+	
+}
