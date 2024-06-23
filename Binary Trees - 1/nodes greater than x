@@ -1,7 +1,8 @@
 base condition yha bhi agr root nhi h to koi bhi greter than x hoga hi nhi that's why 0
 fir if else condition lgado ki if root data bhi x se bda h to use add kro in left and right recursion
 else only left and right recursion
-left and right recursion will go on each node and dekhenge wha ki 
+left and right recursion will work only at either if or else condition
+to fir wo null jb tk nhi hojata tb tk check krta rhega nad store krta rhega agr bda h to. that's it.
 
 
 /*
