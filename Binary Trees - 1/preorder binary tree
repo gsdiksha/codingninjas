@@ -1,0 +1,41 @@
+root - pura left - pura right
+yha prr jo basic 3 lines h 1. print krana data agr null nhi h to
+                           2. left recursion call krna
+                           3. right recursion call krna
+to yha base condition to null check krne ki h 
+usk baad left call jb hoga wo tb tk call hota rhega jb tk null nhi ajata usk baad wo usk parent node ki taraf ata jaega jbtk parent node k pass koi right nhi h
+
+
+
+/*
+	
+	Following the structure used for Binary Tree
+	
+	class BinaryTreeNode<T> {
+		T data;
+		BinaryTreeNode<T> left;
+		BinaryTreeNode<T> right;
+
+		public BinaryTreeNode(T data) {
+			this.data = data;
+			this.left = null;
+			this.right = null;
+		}
+	}
+
+ */
+
+public class Solution {
+
+	public static void preOrder(BinaryTreeNode<Integer> root) {
+		//Your code goes here
+		if(root == null){
+			return;
+		}
+
+		System.out.print(root.data + " ");
+		preOrder(root.left);
+		preOrder(root.right);
+	}
+
+}
