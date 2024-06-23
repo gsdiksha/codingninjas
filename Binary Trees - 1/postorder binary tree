@@ -1,0 +1,36 @@
+left - right - root
+child se shuru krenge to yha bhi recursion calls to denge prr print ekdum last me krenge to jese hi last enode prr hoga udhar null milega to fir wwo right dekhne jaega
+and after puri process hone k baad root.data me sb store hoga to usi ko print krdena h
+
+
+/*
+	
+	Following the structure used for Binary Tree
+	
+	class BinaryTreeNode<T> {
+		T data;
+		BinaryTreeNode<T> left;
+		BinaryTreeNode<T> right;
+
+		public BinaryTreeNode(T data) {
+			this.data = data;
+			this.left = null;
+			this.right = null;
+		}
+	}
+
+ */
+
+public class Solution {
+
+	public static void postOrder(BinaryTreeNode<Integer> root) {
+		//Your code goes here
+		if(root == null){
+			return;
+		}
+		postOrder(root.left);
+		postOrder(root.right);
+		System.out.print(root.data + " ");
+	}
+
+}
