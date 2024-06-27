@@ -1,0 +1,41 @@
+base condition to root == null hi check krna h then root k left me call krlo and root k right me
+then ek condition ye check kregi ki abs(root.right - root.left) > 1 then mtlb balance nhi h 
+aur ye check abhi sirf straight left and right pr hua h 
+left k right and right k left me nahi
+ab left k right and right k left k liye wapas se ek check likho recursioncall hone ka tb jb straight left and right work krdiya then usk andr check krengge agr wha bhi sb shi h to return true wrna false.
+
+/*************************************************************
+
+     Following is thr TreeNode class structure
+
+     class BinaryTreeNode<T>
+     {
+         T data;
+         BinaryTreeNode<T> left;
+         BinaryTreeNode<T> right;
+
+         BinaryTreeNode(T data) {
+             this.data = data;
+             left = null;
+             right = null;
+         }
+     };
+
+ *************************************************************/
+public class Solution {
+    public static boolean isBalancedBT(TreeNode<Integer> root) {
+        // Write your code here.
+        if(root==null){
+            return true;
+        }
+        if(Math.abs(height(root.left)-height(root.right))>1){
+            return false;
+        }
+        return isBalancedBT(root.left)&&isBalancedBT(root.right);
+    }
+
+    public static int height(TreeNode node){
+        if(node==null) return 0;
+        return 1+Math.max(height(node.left),height(node.right));
+    }
+}
