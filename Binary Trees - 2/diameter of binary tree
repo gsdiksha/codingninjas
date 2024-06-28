@@ -1,0 +1,50 @@
+1. agr root se pass hori h to root wali condition lagao which is left,right,+1
+2. agr sirf left side hi leaf to leaf node bhott bada h to right ko ignore marna h 
+3. agr sirf right side hi leaf to leafnode bhott bda h to left ko ignore marna h
+4. diameter is basically leaf to leaf ka highest distance
+5. end me 1,2,3 mese jo maximum h wo return krdo
+
+/*
+	
+	Following is the structure used to represent the Binary Tree Node
+
+	class BinaryTreeNode<T> {
+		T data;
+		BinaryTreeNode<T> left;
+		BinaryTreeNode<T> right;
+
+		public BinaryTreeNode(T data) {
+			this.data = data;
+			this.left = null;
+			this.right = null;
+		}
+	}
+
+*/
+
+public class Solution {
+
+	public static int diameterOfBinaryTree(BinaryTreeNode<Integer> root) {
+        if (root == null) {
+            return 0;
+        }
+
+        // Diameter through root
+        int diameterThroughRoot = height(root.left) + height(root.right) + 1;
+
+        // Diameter of left and right subtrees
+        int diameterLeft = diameterOfBinaryTree(root.left);
+        int diameterRight = diameterOfBinaryTree(root.right);
+
+        // Return the maximum of the three
+        return Math.max(diameterThroughRoot, Math.max(diameterLeft, diameterRight));
+    }
+
+    public static int height(BinaryTreeNode<Integer> node) {
+        if (node == null) {
+            return 0;
+        }
+        return 1 + Math.max(height(node.left), height(node.right));
+    }
+	
+}
