@@ -1,0 +1,44 @@
+3 case bnenge 
+1. jha rootdata <k1 - mtlb minimum value se bhi km h current data to usk andr bhi sb choa hi hoga isliye use seedhe ignore kro. dhundna k1<()<k2 me h qki
+2. rootdata > k2 - mtlb highest value se bda h to bhi ignore kro dhundna hme k1<()<k2 me h qki
+3. k1<()<k2 - agr ink beech me h to pehle left recursion call kro sare left k ikhate krlo then use print kro then right recursion call kro
+har case recursion call hoga, and sbse upr base case check krega 
+
+
+public class Solution {
+
+	/*	Binary Tree Node class 
+	 * 
+	 * 	class BinaryTreeNode<T> {
+			T data;
+			BinaryTreeNode<T> left;
+			BinaryTreeNode<T> right;
+			
+			public BinaryTreeNode(T data) {
+				this.data = data;
+			}
+		}
+		*/
+		
+		public static void elementsInRangeK1K2(BinaryTreeNode<Integer> root,int k1,int k2){
+			if(root==null){
+				return;
+			}
+
+			if(root.data<k1){
+				elementsInRangeK1K2(root.right,k1,k2);
+			}
+			else if(root.data>k2){
+				elementsInRangeK1K2(root.left,k1,k2);
+			}
+			else{
+				
+				// arr.add(root.data);
+				elementsInRangeK1K2(root.left,k1,k2);
+				System.out.print(root.data+" ");
+				elementsInRangeK1K2(root.right,k1,k2);
+			}
+		}
+		
+		
+	}
