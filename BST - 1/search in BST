@@ -1,0 +1,33 @@
+bst me nodes increasing order me hote h
+for ex, left<root<right
+to agr hme ye dekhna h ki koi node present h bhi ki nahi to bss sbse pehle node ka data check krlo agr h to true wrna fir agr 
+root k left me h to return root.left
+agr root k right me h to return root.right
+agr inmese kisime bhi nhi h to false return krdo.
+
+public class Solution {
+
+	/*
+	 * Binary Tree Node class
+	 * 
+	 * class BinaryTreeNode<T> { T data; BinaryTreeNode<T> left; BinaryTreeNode<T> right;
+	 * 
+	 * public BinaryTreeNode(T data) { this.data = data; } }
+	 */
+
+
+	public static boolean searchInBST(BinaryTreeNode<Integer> root, int k) {
+		while(root!=null){
+			if(root.data == k){
+				return true;
+			}
+			else if(k<root.data){
+				root = root.left;
+			}
+			else{
+				root = root.right;
+			}
+		}
+		return false;
+	}
+}
