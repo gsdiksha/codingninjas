@@ -1,0 +1,9 @@
+The run time for traversing all the nodes of a binary search tree with n nodes and printing them in an order is
+
+a)  O(nlg(n))
+b)  O(n)
+c)  O(√n)
+d)  O(log(n))
+
+ans - b
+bcoz in the traversal of bst, each node is traversed once, and constant amount of work happens on each node.
