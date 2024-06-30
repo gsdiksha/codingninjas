@@ -1,3 +1,10 @@
+1 method - base case lena h null and for if root has some data
+then check for agr root k data se chota h to mtlb left me khi hoga to recursion call krdo on root.left
+else root.right
+jese hi ek baar recursion ko data mila to wo upr tk true return krta rhega 
+same with jese hi false mila to wo upr root tk false return krta rhega
+
+
 bst me nodes increasing order me hote h
 for ex, left<root<right
 to agr hme ye dekhna h ki koi node present h bhi ki nahi to bss sbse pehle node ka data check krlo agr h to true wrna fir agr 
@@ -17,17 +24,28 @@ public class Solution {
 
 
 	public static boolean searchInBST(BinaryTreeNode<Integer> root, int k) {
-		while(root!=null){
-			if(root.data == k){
-				return true;
-			}
-			else if(k<root.data){
-				root = root.left;
-			}
-			else{
-				root = root.right;
-			}
+		if(root == null){
+			return false;
 		}
-		return false;
+		if(root.data == k){
+			return true;
+		}
+
+		if(root.data > k){
+			return searchInBST(root.left,k);
+		}
+		return searchInBST(root.right,k);
+	// 	while(root!=null){
+	// 		if(root.data == k){
+	// 			return true;
+	// 		}
+	// 		else if(k<root.data){
+	// 			root = root.left;
+	// 		}
+	// 		else{
+	// 			root = root.right;
+	// 		}
+	// 	}
+	// 	return false;
 	}
 }
