@@ -1,0 +1,88 @@
+base condition me ye check kro ki root null h kya agr h to true hi jaega qki question me pucha h ki bst h ki nahi
+mtlb left < root < right
+then check for root.left agr null nahi h aur root k left ki sbse bdi value bhi root se choti h that means ye sahi h, prr agr ek bhi value root se bdi mili to false return 
+then check for root.right agr null nahi h aur root k right ki sbse choti value bhi agr root se bdi h then it is fine otherwise, return false
+ab check kro ki har root pr left, right h ki nahi agr nahi h to ye binary tree nahi h return false
+otherwise return true, sare test cases pass hogaye h
+
+import java.io.*;
+/*
+	
+	Following is the structure used to represent the Binary Tree Node
+
+	class BinaryTreeNode<T> {
+		T data;
+		BinaryTreeNode<T> left;
+		BinaryTreeNode<T> right;
+
+		public BinaryTreeNode(T data) {
+			this.data = data;
+			this.left = null;
+			this.right = null;
+		}
+	}
+
+ */
+
+public class Solution {
+    
+
+	public static int maxValue(BinaryTreeNode<Integer> root)
+    {
+        if (root == null) {
+            return Integer.MIN_VALUE;
+        }
+        int value = root.data;
+        int leftMax = maxValue(root.left);
+        int rightMax = maxValue(root.right);
+
+        return Math.max(value, Math.max(leftMax, rightMax));
+    }
+
+    public static int minValue(BinaryTreeNode<Integer> root)
+    {
+        if (root == null) {
+            return Integer.MAX_VALUE;
+        }
+        int value = root.data;
+        int leftMax = minValue(root.left);
+        int rightMax = minValue(root.right);
+
+        return Math.min(value, Math.min(leftMax, rightMax));
+    }
+
+	public static boolean isBST(BinaryTreeNode<Integer> root) {
+        if(root == null){
+			return true;
+		}
+
+        /* false if the max of the left is > than us */
+        if (root.left != null
+            && maxValue(root.left) > root.data) {
+            return false;
+        }
+
+        /* false if the min of the right is <= than us */
+        if (root.right != null
+            && minValue(root.right) < root.data) {
+            return false;
+        }
+
+        /* false if, recursively, the left or right is not a
+         * BST*/
+        // if (isBST(root.left) == false
+        //     || isBST(root.right) == false) {
+        //     return false;
+        // }
+
+        /* passing all that, it's a BST */
+        return true;
+		/* Your class should be named Solution
+		 * Don't write main().
+		 * Don't read input, it is passed as function argument.
+		 * Return output and don't print it.
+	 	 * Taking input and printing output is handled automatically.
+        */
+	}
+
+}
