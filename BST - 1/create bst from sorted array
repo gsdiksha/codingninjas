@@ -1,0 +1,38 @@
+array ka mid element ko ek node me store krenge 
+array sorted h to mid ka left pura node ka left part of tree rhega and 
+mid ka right pura node ka right part of tree rhega
+to jese hi root and mid bna hm recursion call krdenge left and right side pr recursion subtree cretae kr rha hoga
+aur left subtree ko root se link - root.left se krenge
+end me bss root return krdo
+
+public class Solution {
+
+	/*	Binary Tree Node class 
+	 * 
+	 * 	class BinaryTreeNode<T> {
+			T data;
+			BinaryTreeNode<T> left;
+			BinaryTreeNode<T> right;
+			
+			public BinaryTreeNode(T data) {
+				this.data = data;
+			}
+		}
+		*/
+	
+		public static BinaryTreeNode<Integer> SortedArrayToBST(int[] arr, int n){
+			return SortedArrayToBST(arr, 0, arr.length-1);
+		}
+		public static BinaryTreeNode<Integer> SortedArrayToBST(int[] arr, int si, int ei){
+			if(si>ei){
+				return null;
+			}
+			int mid = (si+ei)/2;
+			BinaryTreeNode<Integer> root=new BinaryTreeNode<>(arr[mid]);
+     
+        root.left=SortedArrayToBST(arr,si,mid-1);
+        root.right=SortedArrayToBST(arr,mid+1,ei);
+        return root;
+
+		}
+	}
