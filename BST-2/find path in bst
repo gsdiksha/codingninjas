@@ -1,6 +1,13 @@
 yha bss jis point pr hme matching value ilgayi wha se root tk ka data print krna h.
 to ye bst h mtlbb left<root<right
 yhi logic lgakr left right dekhlo jha miljae wha se ek list return krdo
+for ex, base condition null ko check kregi
+usk baad root data then left then right
+jb root.data ki value equal nhi h to us data ko output me store krlo
+ab left side check krenge agr in case kuch bhi milta h to wo sb leftoutput me store hoga jese, 1-2-5 hmara data 5 h aur root.left.left me h ye vallue
+to leftoutput me 2-5 store hoga bcoz jese hi 5 mila aur usne output me 5 diya and jb ye return krega to ye return leftoutput k liye krega bcoz usi function ne ise call kra tha.
+to leftoutput = 2-5 ab ye check krlo ki iski value null nhi h to isme add krdo root.data 
+same process for right side
 
 import java.util.ArrayList;
 
