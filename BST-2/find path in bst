@@ -1,3 +1,7 @@
+yha bss jis point pr hme matching value ilgayi wha se root tk ka data print krna h.
+to ye bst h mtlbb left<root<right
+yhi logic lgakr left right dekhlo jha miljae wha se ek list return krdo
+
 import java.util.ArrayList;
 
 public class Solution {
