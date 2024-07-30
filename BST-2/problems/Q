@@ -1,0 +1,3 @@
+1. What is the minimum height of a Binary search tree with 14 nodes?
+ans - 4
+The minimum height of a binary search tree (BST) with 14 nodes can be determined by considering the properties of a complete binary tree, which is a tree where all levels except possibly the last are fully filled, and all nodes are as far left as possible.
