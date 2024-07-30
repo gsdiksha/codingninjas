@@ -1,0 +1,19 @@
+You are given with the nodes of a binary search tree . Find the height of the BST.
+
+15 , 10 , 5 , 9 , 18 , 29 , 3 , 2.
+
+(Starting from an empty tree , insert 15(root of the tree) and then insert 10 and so on.)
+Height of tree with single node is 1.
+ans - 5(considering height of single node =1)
+                            15
+                           /  \
+                          10  18
+                         /      \
+                        5       29
+                      /  \ 
+                    3     9
+                  /
+                2
+
+root k left ka sb chota hona chahiye root se and root k right ka sb bda
+                
