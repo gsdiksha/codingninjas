@@ -1,0 +1,42 @@
+hashmap me frequency store kraenge har key ki
+key, value pair me
+key = map.put(arr[i])
+value = map.get(arr[i])
+fir store hone k baad wapas arr pr for loop lgakrr dekhenge ki har arr k liye kitne occurances h
+aur isse jo array me pehle occur hora hoga uska count pehle hi mil jaega.
+import java.util.HashMap;
+
+public class Solution {
+
+    public static int maxFrequencyNumber(int[] arr){ 
+        /* Your class should be named Solution
+         * Don't write main().
+         * Don't read input, it is passed as function argument.
+         * Return output and don't print it.
+         * Taking input and printing output is handled automatically.
+        */
+        HashMap<Integer, Integer> map = new HashMap<>();
+        
+        // Populate the frequency map
+        for (int i = 0; i < arr.length; i++) {
+            if (map.containsKey(arr[i])) {
+                map.put(arr[i], map.get(arr[i]) + 1);
+            } else {
+                map.put(arr[i], 1);
+            }
+        }
+        
+        int maxFrequency = 0;
+        int maxKey = arr.length > 0 ? arr[0] : -1; // Handle empty array case
+
+        // Find the element with the highest frequency
+        for (int i = 0; i < arr.length; i++) {
+            if (map.get(arr[i]) > maxFrequency) {
+                maxFrequency = map.get(arr[i]);
+                maxKey = arr[i];
+            }
+        }
+        
+        return maxKey;
+    }   
+}
