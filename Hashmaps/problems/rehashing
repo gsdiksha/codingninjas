@@ -1,0 +1,37 @@
+If we perform rehashing when load factor is greater than 0.7, and the bucket size is 12 . For what value of size would we perform rehashing?
+
+ans - The load factor is defined as the ratio of the number of elements (size) in the hash table to the number of buckets. When the load factor exceeds a certain threshold, in this case, 0.7, rehashing is performed to maintain the efficiency of the hash table operations.
+
+Given:
+
+Bucket size = 12
+Load factor threshold = 0.7
+We need to find the value of size at which rehashing occurs.
+
+Load Factor
+=
+size/
+bucket size
+=
+0.7
+
+Load Factor= 
+bucket size
+size
+​
+ =0.7
+size
+=
+0.7
+×
+bucket size
+=
+0.7
+×
+12
+=
+8.4
+size=0.7×bucket size=0.7×12=8.4
+Since the size must be an integer (number of elements), rehashing would typically occur when the size exceeds 8.
+
+Thus, rehashing would be performed when the size is 9.
