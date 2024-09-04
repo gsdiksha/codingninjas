@@ -1,0 +1,10 @@
+Problem statement
+Given is a waiting list of IRCTC , based on the booking date (early booking means more priority ). Arrange the following passenger in order of their ticket confirmation. ( The passenger who gets the ticket first, comes first).
+
+Name      Booking Date
+A               5/12/19
+B               8/12/19
+C               2/12/19
+D               7/12/19
+
+ans - CADB
