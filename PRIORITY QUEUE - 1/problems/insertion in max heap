@@ -1,0 +1,38 @@
+Problem statement
+Consider a max heap, represented by the array: 40, 30, 20, 10, 15, 16, 17, 8, 4. Now consider that a value 35 is inserted into this heap. After insertion, the new heap is:
+
+ans - 40, 35, 20, 30, 15, 16, 17, 8, 4, 10
+To solve this problem, let's break it down step by step:
+
+Initial Max Heap:
+The given max heap is represented by the array:
+40, 30, 20, 10, 15, 16, 17, 8, 4.
+The array represents a heap-structured binary tree, where:
+
+The root (index 0) is the largest element (40).
+For a node at index i, the left child is at index 2i + 1 and the right child is at index 2i + 2.
+Insert 35 into the Heap:
+When inserting into a heap, the new value is initially placed at the last position of the array. So the array after inserting 35 looks like this:
+40, 30, 20, 10, 15, 16, 17, 8, 4, 35.
+
+Heapify (Bubble Up):
+After inserting the new element at the last position, we need to restore the max-heap property by "bubbling up" the new element. This process compares the newly inserted element with its parent and swaps if necessary, repeating until the heap property is restored.
+
+Let's go through the steps:
+
+Step 1: Insert 35 at the last position, i.e., at index 9.
+
+Step 2: Compare 35 with its parent:
+
+Parent of 35 (at index 9) is 10 (at index 4). Since 35 is larger than 10, we swap them.
+New array: 40, 30, 20, 35, 15, 16, 17, 8, 4, 10.
+Step 3: Now, 35 is at index 3. Compare it with its parent:
+
+Parent of 35 (at index 3) is 30 (at index 1). Since 35 is larger than 30, we swap them.
+New array: 40, 35, 20, 30, 15, 16, 17, 8, 4, 10.
+Step 4: Now, 35 is at index 1. Compare it with its parent:
+
+Parent of 35 (at index 1) is 40 (at index 0). Since 35 is less than 40, no further swaps are needed.
+Final Max Heap:
+After the insertion and heapifying process, the new max heap is:
+40, 35, 20, 30, 15, 16, 17, 8, 4, 10.
