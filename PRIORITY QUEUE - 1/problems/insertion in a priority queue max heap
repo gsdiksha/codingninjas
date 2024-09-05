@@ -1,0 +1,62 @@
+A Priority-Queue is implemented as a Max-Heap. Initially, it has 5 elements. The level-order traversal of the heap is given below: 10, 8, 5, 3, 2 Two new elements ”1‘ and ”7‘ are inserted in the heap in that order. The level-order traversal of the heap after the insertion of the elements is:
+ans - 10, 8, 7, 3, 2, 1, 5
+
+Let's solve this step-by-step.
+
+Initial Max-Heap:
+The initial level-order traversal of the heap is:
+
+Copy code
+10, 8, 5, 3, 2
+This corresponds to the following binary tree structure:
+
+markdown
+Copy code
+        10
+       /  \
+      8    5
+     / \
+    3   2
+Step 1: Insert "1"
+Insert the new element 1 at the next available position, which is the left child of the node with value 5. This results in the following array:
+
+Copy code
+10, 8, 5, 3, 2, 1
+The tree structure becomes:
+
+markdown
+Copy code
+        10
+       /  \
+      8    5
+     / \  /
+    3   2 1
+The element 1 is already smaller than its parent 5, so no "bubbling up" is needed. The heap is still valid.
+
+Step 2: Insert "7"
+Insert the new element 7 at the next available position, which is the right child of the node with value 5. This results in the following array:
+
+Copy code
+10, 8, 5, 3, 2, 1, 7
+The tree structure becomes:
+
+markdown
+Copy code
+        10
+       /  \
+      8    5
+     / \  / \
+    3   2 1  7
+Now, compare the newly inserted element 7 with its parent (5). Since 7 > 5, we swap them:
+
+Copy code
+10, 8, 7, 3, 2, 1, 5
+The tree becomes:
+
+markdown
+Copy code
+        10
+       /  \
+      8    7
+     / \  / \
+    3   2 1  5
