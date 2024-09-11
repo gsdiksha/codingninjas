@@ -1,0 +1,96 @@
+import java.util.ArrayList;
+
+public class PQ {
+    // Complete this class
+    ArrayList<Integer> heap = new ArrayList<Integer>();
+
+    // Check if the heap is empty
+    boolean isEmpty() {
+        return heap.size() == 0;
+    }
+
+    // Get the size of the heap
+    int getSize() {
+        return heap.size();
+    }
+
+    // Get the maximum element (which is the root in a Max-Heap)
+    int getMax() {
+        if (isEmpty()) {
+            return Integer.MIN_VALUE;
+        }
+        return heap.get(0);
+    }
+
+    // Insert a new element in the heap
+    void insert(int element) {
+        heap.add(element);
+        int childIndex = heap.size() - 1;
+        int parentIndex = (childIndex - 1) / 2;
+
+        // Heapify up (bubble up)
+        while (childIndex > 0) {
+            if (heap.get(childIndex) > heap.get(parentIndex)) {
+                // Swap child and parent if child is larger
+                int temp = heap.get(childIndex);
+                heap.set(childIndex, heap.get(parentIndex));
+                heap.set(parentIndex, temp);
+
+                // Move up the heap
+                childIndex = parentIndex;
+                parentIndex = (childIndex - 1) / 2;
+            } else {
+                return; // Heap property restored
+            }
+        }
+    }
+
+    // Remove and return the maximum element from the heap
+    int removeMax() {
+        if (isEmpty()) {
+            return Integer.MIN_VALUE;
+        }
+
+        int maxElement = heap.get(0); // Store the max element (root)
+
+        // Replace root with the last element and remove the last element
+        heap.set(0, heap.get(heap.size() - 1));
+        heap.remove(heap.size() - 1);
+
+        // Heapify down (bubble down) from the root
+        int parentIndex = 0;
+        int leftChildIndex = 2 * parentIndex + 1;
+        int rightChildIndex = 2 * parentIndex + 2;
+
+        while (leftChildIndex < heap.size()) {
+            int maxIndex = parentIndex;
+
+            // Check if left child is larger than the current max
+            if (heap.get(leftChildIndex) > heap.get(maxIndex)) {
+                maxIndex = leftChildIndex;
+            }
+
+            // Check if right child exists and is larger than the current max
+            if (rightChildIndex < heap.size() && heap.get(rightChildIndex) > heap.get(maxIndex)) {
+                maxIndex = rightChildIndex;
+            }
+
+            // If the parent is already larger than both children, stop
+            if (maxIndex == parentIndex) {
+                break;
+            }
+
+            // Swap parent with the larger child
+            int temp = heap.get(parentIndex);
+            heap.set(parentIndex, heap.get(maxIndex));
+            heap.set(maxIndex, temp);
+
+            // Move down the heap
+            parentIndex = maxIndex;
+            leftChildIndex = 2 * parentIndex + 1;
+            rightChildIndex = 2 * parentIndex + 2;
+        }
+
+        return maxElement;
+    }
+}
