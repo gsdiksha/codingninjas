@@ -1,0 +1,37 @@
+yha ulta krna hota h if max element dekhre h to min heap chahiye agr min element to max heap
+here we need to fin 3 max elements therefore we need min heap
+pq me starting k 3 store krlo min order me store rhenge wo
+then baki array prr traverse krk unpr ek check lgana h agr arr ki value pq k sbse chote element se bdi h to mtlb wo pq me hona chahiye
+to pq ka previous poll(remove) krdenge and ye naya add krdenge
+basically ye check isliye h ki agr pq ki value se chota kkuch h to use seedhe ignore krdo qki hme max elements chahiye
+finally end tk traverse krne k baad we have our largest elements in pq.
+
+import java.util.ArrayList;
+import java.util.PriorityQueue;
+
+public class Solution {
+
+	public static ArrayList<Integer> kLargest(int input[], int k) {
+		/* Your class should be named Solution
+		* Don't write main().
+		* Don't read input, it is passed as function argument.
+		* Return output and don't print it.
+		* Taking input and printing output is handled automatically.
+		*/
+		ArrayList<Integer> ary=new ArrayList<>();
+		PriorityQueue<Integer> pq = new PriorityQueue<>();
+		for(int i=0;i<k;i++){
+			pq.add(input[i]);
+		}
+		for(int i=k;i<input.length;i++){
+			if(input[i]>pq.peek()){
+				pq.poll();
+				pq.add(input[i]);
+			}
+		}
+		while(!pq.isEmpty()){
+            ary.add(pq.poll());
+					}
+		return ary;
+	}
+}
