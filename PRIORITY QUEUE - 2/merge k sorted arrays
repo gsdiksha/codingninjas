@@ -1,0 +1,39 @@
+we will be using heap here:
+to jitni bhi k arrays h wo sb yha input 2d array me diya h mtlb input(0) prr ek puri array h to pq me ye har array pehle store krte jao
+lets say input.size = 3
+to input(0), input(1) , input(2) in teeno ki values k liye ek temp array bnakrr use pq me add krdo
+pq be default min hi h to wo end me min merge sorted array dega 
+
+import java.util.ArrayList;
+import java.util.PriorityQueue;
+
+public class Solution {
+
+    public static ArrayList<Integer> mergeKSortedArrays(ArrayList<ArrayList<Integer>> input) {
+
+        /* Your class should be named Solution
+         * Don't write main().
+         * Don't read input, it is passed as function argument.
+         * Return output and don't print it.
+         * Taking input and printing output is handled automatically.
+         */
+        ArrayList<Integer> ans = new ArrayList<>();
+        PriorityQueue<Integer> pq = new PriorityQueue<>();
+        
+        // Add all elements from each sorted array into the priority queue
+        for (int i = 0; i < input.size(); i++) {
+            ArrayList<Integer> eachSortedInputIndex = input.get(i);
+            for (int j = 0; j < eachSortedInputIndex.size(); j++) {
+                pq.add(eachSortedInputIndex.get(j));  // Add each element to the priority queue
+            }
+        }
+        
+        // Extract elements from the priority queue and add them to the result list
+        while (!pq.isEmpty()) {
+            ans.add(pq.poll());  // Directly add the smallest element returned by pq.poll()
+        }
+        
+        return ans;  // Return the merged sorted list
+    }
+
+}
