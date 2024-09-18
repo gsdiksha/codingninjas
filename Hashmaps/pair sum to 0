@@ -1,0 +1,36 @@
+isme hmesha 2 hi numbers consider honge
+to hme paircount return krna h
+ek for loop chlega jo check bhi krta jaega aur store bhi
+agr key present h map me to jitni uski value h utni times paircount bnega
+wrna agr key nhi h to key ko add krna h bss
+
+import java.util.*;
+
+public class Solution {
+    public static int PairSum(int[] input, int size) {
+        if (size == 0) {
+            return 0;
+        }
+
+        HashMap<Integer, Integer> map = new HashMap<>();
+        int countPairs = 0;
+
+        for (int i = 0; i < size; i++) {
+            int complement = -input[i];
+
+            if (map.containsKey(complement)) {
+                int count = map.get(complement);
+                
+                while (count > 0) {
+                    
+                    countPairs++;
+                    count--;
+                }
+            }
+            
+            map.put(input[i], map.getOrDefault(input[i], 0) + 1);
+        }
+
+        return countPairs;  // Return the number of pairs found
+    }
+}
