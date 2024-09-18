@@ -1,0 +1,27 @@
+we can save steps by
+for loop run krte time check if ye key present h ki nahi map me and agr nhi h to hi add kro map me and ans string me add kro.
+map= character, boolean format
+
+
+
+import java.util.HashMap;
+
+public class Solution {
+
+    public static String uniqueChar(String str) {
+        HashMap<Character, Boolean> map = new HashMap<>();
+        StringBuilder ans = new StringBuilder();
+
+        for (int i = 0; i < str.length(); i++) {
+            char currentChar = str.charAt(i);
+
+            // If the character is not already added to the result
+            if (!map.containsKey(currentChar)) {
+                map.put(currentChar, true);  // Mark the character as added
+                ans.append(currentChar);     // Append to the result string
+            }
+        }
+
+        return ans.toString();  // Convert StringBuilder to String
+    }
+}
