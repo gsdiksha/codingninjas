@@ -1,0 +1,25 @@
+yaha largest element chahiye to hm min heap use krenge
+min heap k numbers ko minimum order me store krega mtlb sbse upr wala un k me sbse chota for e 3rd largest to k=3 ka min heap aur sbse upr wala hi sbse chota which is 3largest.
+it is similar to print k largest/smallest elements
+
+
+
+import java.util.PriorityQueue;
+
+public class Solution {
+
+	public static int kthLargest(int n, int[] input, int k) {
+		// Write your code here
+        PriorityQueue<Integer> pq = new PriorityQueue<>();
+		for(int i=0;i<k;i++){
+			pq.add(input[i]);
+		}
+		for(int i=k;i<n;i++){
+			if(input[i]>pq.peek()){
+				pq.poll();
+				pq.add(input[i]);
+			}
+		}
+		return pq.peek();
+	}
+}
