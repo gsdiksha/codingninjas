@@ -1,0 +1,41 @@
+continous array jo ki sum=0 me convert honge
+1 : ya to jha tk ka sum lere h whi 0 hojae to index+1 ans hoga 
+2 : kisi 2 index pr sum same aaye mtlb wo dono index ka difference length hogi hmari ans
+sum add : sum(0),sum(0)+sum(1),sum(0)+sum(1)+sum(2)... ese har index k sath sum add hota jara h
+map me sum,index store krenge
+possible h ki multiple ese subarrays mile jha sum=0 h to isliye check for each time after getting maxlength kis sbse bdi konsi h.
+even if sum=0 mil jata h khi to code will not skip next lines. it will execute to see if any other subarray exists with bigger length.
+
+import java.util.HashMap;
+
+public class Solution {
+
+    public static int lengthOfLongestSubsetWithZeroSum(int arr[]) {
+        if (arr.length == 0) {
+            return 0;
+        }
+
+        int maxlength = 0;
+        int sum = 0;  // Cumulative sum
+        HashMap<Integer, Integer> map = new HashMap<>(); // Map to store (sum, index)
+
+        for (int i = 0; i < arr.length; i++) {
+            sum += arr[i];  // Add current element to sum
+
+            // If sum is 0, the subarray from the beginning to current index has zero sum
+            if (sum == 0) {
+                maxlength = i + 1;
+            }
+
+            // If the sum is already present in the map, we found a subarray with zero sum
+            if (map.containsKey(sum)) {
+                int indexpresent = map.get(sum); // Get the first occurrence of this sum
+                maxlength = Math.max(maxlength, i - indexpresent); // Update maxlength
+            } else {
+                // Store the sum with its index if it's not already present
+                map.put(sum, i);
+            }
+        }
+        return maxlength;
+    }
+}
