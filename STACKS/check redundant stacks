@@ -1,0 +1,61 @@
+redundant = unnecessary brackets
+stack of characters me sbkuch dalte jaenge except for ')'
+jese hi khi ')' dikhega then pop krte jana h and har pop ka count add krte jana h
+basically har ')' prr count =0 se shuru krenge to see whether there is something in between closing brackets or not
+pop count krte time bss '(' ko consider nhi krna
+now pop the '(' only one time
+isk baad check for count agr ye <=1 hua mtlb unwanted bracekts use hue h mtlb ans = true
+why count not just 0 and <=1 bcoz yha ya to kuch nhi h ya fir bss ek character h which is useless
+if - ')' case handle kregi
+else bss character dalta jaega stack me
+for loop k bahar return false krdo qki hmne andr cover kra h case jha redundant mil skta h agr wo pass hogya mtlb there is everything needed in the string. ans = false.
+
+
+
+import java.util.Stack;
+
+public class Solution {
+
+    public static boolean checkRedundantBrackets(String expression) {
+        Stack<Character> st = new Stack<>();
+
+        for (int i = 0; i < expression.length(); i++) {
+            char ch = expression.charAt(i);
+            
+            if (ch == ')') {
+                int count = 0;
+                
+                // Pop from the stack until we find the opening bracket '('
+                while (!st.isEmpty() && st.peek() != '(') {
+                    char top = st.pop();
+                    // Count all characters except '('
+                    count++;
+                }
+                
+                // Pop the opening bracket '('
+                if (!st.isEmpty()) {
+                    st.pop();
+                }
+
+                // If there's nothing inside the brackets, or only a single character (no operator), it's redundant
+                if (count <= 1) {
+                    return true; // Consider both empty or single character as redundant
+                }
+            } else {
+                // Push any character that is not a closing bracket
+                st.push(ch);
+            }
+        }
+
+        return false;  // No redundant brackets found
+    }
+
+    public static void main(String[] args) {
+        // Test cases
+        System.out.println(checkRedundantBrackets("(c)")); // Should return true (redundant)
+        System.out.println(checkRedundantBrackets("(a+b)")); // Should return false (not redundant)
+        System.out.println(checkRedundantBrackets("((a+b))")); // Should return true (redundant)
+        System.out.println(checkRedundantBrackets("(a)")); // Should return true (redundant)
+        System.out.println(checkRedundantBrackets("(a*b)")); // Should return false (not redundant)
+    }
+}
