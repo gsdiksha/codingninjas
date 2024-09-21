@@ -1,0 +1,51 @@
+root se root.child = null tk ka distance btana h
+default height =0 lekrr start krte h
+ek base condition jo recursion degi wo har root.child = null prr height =1
+to jb hum for loop me check krenge children k liye 
+to recursion call krenge aur max(height, recursion height) dekhenge
+recursion height har baar khudko call krk 1 return krega qki end me 1 milega 
+last me hum height +1 krdenge (1 is root here)
+
+
+
+import java.util.*;
+public class Solution {
+
+	/*	TreeNode structure 
+	 * 
+	 * class TreeNode<T> {
+		T data;
+		ArrayList<TreeNode<T>> children;
+
+		TreeNode(T data){
+			this.data = data;
+			children = new ArrayList<TreeNode<T>>();
+		}
+	}*/
+
+	public static int getHeight(TreeNode<Integer> root){
+		/* Your class should be named Solution
+		 * Don't write main().
+		 * Don't read input, it is passed as function argument.
+		 * Return output and don't print it.
+		 * Taking input and printing output is handled automatically.
+		 */
+		int height = 0;
+    if (root == null )
+    {
+    return height;
+    }
+        
+    if (root.children == null)
+    {
+    return 1;
+    }
+        
+   for (TreeNode<Integer> child : root.children) 
+   {
+    height = Math.max(height, getHeight(child));
+  	}
+   return height + 1;
+	}
+
+}
