@@ -44,3 +44,83 @@ public class Solution {
 
 	
 }
+
+
+// other approach
+import java.util.LinkedList;
+import java.util.Queue;
+
+public static boolean checkIfContainsX(TreeNode<Integer> root, int x) {
+
+    // Base case: If the root is null, return false
+    if (root == null) {
+        return false;
+    }
+
+    // Create a queue to perform BFS
+    Queue<TreeNode<Integer>> queue = new LinkedList<>();
+    queue.add(root);
+
+    // Traverse the tree level by level
+    while (!queue.isEmpty()) {
+        TreeNode<Integer> currentNode = queue.poll();
+
+        // If the current node's data is equal to x, return true
+        if (currentNode.data == x) {
+            return true;
+        }
+
+        // Add all children of the current node to the queue
+        for (TreeNode<Integer> child : currentNode.children) {
+            queue.add(child);
+        }
+    }
+
+    // If x is not found, return false
+    return false;
+}
+Explanation of BFS approach:
+A queue is used to store nodes as we traverse level by level.
+The root node is first added to the queue.
+For each node, we check if its data is equal to x.
+If a match is found, true is returned.
+If the queue is exhausted without finding x, false is returned.
+
+import java.util.Stack;
+
+public static boolean checkIfContainsX(TreeNode<Integer> root, int x) {
+
+    // Base case: If the root is null, return false
+    if (root == null) {
+        return false;
+    }
+
+    // Create a stack to perform DFS
+    Stack<TreeNode<Integer>> stack = new Stack<>();
+    stack.push(root);
+
+    // Traverse the tree depth by depth
+    while (!stack.isEmpty()) {
+        TreeNode<Integer> currentNode = stack.pop();
+
+        // If the current node's data is equal to x, return true
+        if (currentNode.data == x) {
+            return true;
+        }
+
+        // Add all children of the current node to the stack
+        for (TreeNode<Integer> child : currentNode.children) {
+            stack.push(child);
+        }
+    }
+
+    // If x is not found, return false
+    return false;
+}
+Explanation of DFS (iterative):
+A stack is used instead of recursion to simulate depth-first traversal.
+Nodes are pushed onto the stack, and we explore as deep as possible along the children.
+If x is found at any depth, the function immediately returns true.
+If the stack is exhausted without finding x, false is returned.
+
+
