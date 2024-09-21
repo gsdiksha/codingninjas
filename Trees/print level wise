@@ -1,0 +1,54 @@
+ye bst nhi h to children kitne bhi ho skte h
+we will use queue, node, list here
+queue me initially root store krna h aur queue me (ek baar me ek level ka data hoga) jo print hona h ek line me
+jb queue empty nhi h to size nikalna qki utne size k elements print honge
+then har bar ek fresh list bnegi to store tempans
+for loop me node k through root aur children connect honge
+for loop will run according to size
+then queue se pehla element hatkar use node me dalna
+is node ka data tempans me add krna
+node bss isliye use kiya yha qki children se connect krna tha wrna seedhe queue se nikalkr value tempans me dal skte the
+node k through jo children aaye h use queue me daldo
+ek step tempans me value dalne k baad ise hal k hal print krate jao without brackets
+basically simple tree ko level wise print krdena h print k liye list use krenge
+prr tree se list me convert krne k liye queue, treenode use krenge
+
+
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.ArrayList;
+public class Solution {
+
+    public static void printLevelWise(TreeNode<Integer> root) {
+        if (root == null) {
+            return;
+        }
+
+        Queue<TreeNode<Integer>> queue = new LinkedList<>();
+        queue.add(root);
+
+        while (!queue.isEmpty()) {
+            int levelSize = queue.size();
+            ArrayList<Integer> tempAns = new ArrayList<>();
+
+            for (int i = 0; i < levelSize; i++) {
+                TreeNode<Integer> node = queue.poll();
+                tempAns.add(node.data);
+
+                // Add children to the queue
+                for (TreeNode<Integer> child : node.children) {
+                    queue.add(child);
+                }
+            }
+
+            // Print the current level without brackets
+            for (int i = 0; i < tempAns.size(); i++) {
+                System.out.print(tempAns.get(i)+" ");
+                // if (i < tempAns.size() - 1) {
+                //     System.out.print(" "); // Print space between elements
+                // }
+            }
+            System.out.println(); // New line after each level
+        }
+    }
+}
