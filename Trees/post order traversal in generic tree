@@ -1,0 +1,61 @@
+sirf root diya hua h hme and its not bst
+then iska opposite case solve kra h hmne in print level wise
+yha bs child ka pehle then root ka print hoga
+to if condition to check the null of last
+for loop me recursion call krdo.
+root.children 
+10 
+20 30 40
+40 50
+puri node hi print hogi isliye ek line wale ek sath
+sbse end me root.data print krdo
+       1
+      / \
+     2   3
+    / \
+   4   5
+If printPostOrder(1) is called:
+It processes 1, then enters the loop:
+For child = 2, it calls printPostOrder(2).
+For 2, it processes 2, then enters its loop:
+For child = 4, it calls printPostOrder(4).
+4 has no children, so it prints 4 and returns.
+For child = 5, it calls printPostOrder(5).
+5 also has no children, so it prints 5 and returns.
+Now, after processing both children, it prints 2.
+For child = 3, it calls printPostOrder(3).
+3 has no children, so it prints 3 and returns.
+Finally, after processing all children, it prints 1.
+
+
+public class Solution {
+
+    /* TreeNode structure 
+     * 
+     * class TreeNode<T> {
+     *     T data;
+     *     ArrayList<TreeNode<T>> children;
+     *
+     *     TreeNode(T data){
+     *         this.data = data;
+     *         children = new ArrayList<TreeNode<T>>();
+     *     }
+     * }
+     */
+
+    public static void printPostOrder(TreeNode<Integer> root) {
+        // Base case: if the node is null, return
+        if (root == null) {
+            return;
+        }
+
+        // Recursively call printPostOrder on all children
+        //yha bhale hi it passed for 10, 20, 40 ,50 prr wo wapas jb 20 pr aega tb aur jo dusre child the 30,40 use bhi process krega before going to parent
+        for (TreeNode<Integer> child : root.children) {
+            printPostOrder(child);
+        }
+
+        // Print the current node's data after its children
+        System.out.print(root.data + " ");
+    }
+}
