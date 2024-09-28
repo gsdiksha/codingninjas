@@ -1,0 +1,85 @@
+Example:
+Consider the following tree structure and n = 12:
+
+markdown
+Copy code
+                10
+              /    \
+            5       15
+          /   \    /   \
+        3     8  12    20
+Step 1 (Root: 10):
+
+We start at the root node (10).
+Since 10 is not greater than 12, we don't consider it.
+We then go into the for loop to check each child of node 10.
+Step 2 (First Child: 5):
+
+The first child of node 10 is node 5.
+Since 5 is not greater than 12, we don't consider it.
+We then check its children (3 and 8).
+Step 3 (Children of 5):
+
+Node 3 is not greater than 12, so we don't consider it.
+Node 8 is also not greater than 12, so we don't consider it.
+Both recursive calls return null.
+Step 4 (Second Child: 15):
+
+The second child of node 10 is node 15.
+Since 15 is greater than 12, it becomes a candidate (result = 15).
+We now check its children (12 and 20).
+Step 5 (Children of 15):
+
+Node 12 is not greater than 12, so we don't consider it.
+Node 20 is greater than 12, but 20 is larger than the current candidate (15), so we keep 15 as the result.
+The recursive call for node 12 returns null, and for node 20, it returns 20.
+Step 6 (Final Decision):
+
+After checking all children of node 15, we find that 15 is the smallest valid node larger than 12.
+The function returns node 15 as the answer.
+
+
+
+public class Solution {
+
+/*	TreeNode structure 
+ * 
+ * class TreeNode<T> {
+		T data;
+		ArrayList<TreeNode<T>> children;
+
+		TreeNode(T data){
+			this.data = data;
+			children = new ArrayList<TreeNode<T>>();
+		}
+	}*/
+	
+	public static TreeNode<Integer> findNextLargerNode(TreeNode<Integer> root, int n){
+		
+		// Write your code here
+		if (root == null) {
+            return null;  // Base case: if the root is null, return null
+        }
+
+        TreeNode<Integer> result = null;
+
+        // Step 1: Check if the current node's data is larger than n
+        if (root.data > n) {
+            result = root;  // If the root's data is larger, set result as root
+        }
+
+        // Step 2: Recursively check for the next larger node in each child
+        for (TreeNode<Integer> child : root.children) {
+            TreeNode<Integer> childResult = findNextLargerNode(child, n);
+
+            // If childResult is not null and (result is null or childResult's data is smaller than result's data)
+            if (childResult != null && (result == null || childResult.data < result.data)) {
+                result = childResult;  // Update result to be the smaller valid node
+            }
+        }
+
+        return result;  // Return the next larger node
+
+	}
+	
+}
