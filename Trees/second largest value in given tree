@@ -1,0 +1,66 @@
+root is not directly an integer: You are trying to add root to the priority queue, but root is a TreeNode<Integer> object, not an integer.
+input[i] and n are undefined: There is no array input defined, and n is not declared. You need to traverse the tree and collect the values from the nodes instead.
+
+
+
+
+import java.util.LinkedList;
+import java.util.Queue;
+
+public class Solution {
+
+/*	TreeNode structure 
+ * 
+ * class TreeNode<T> {
+		T data;
+		ArrayList<TreeNode<T>> children;
+
+		TreeNode(T data){
+			this.data = data;
+			children = new ArrayList<TreeNode<T>>();
+		}
+	}*/
+	
+		
+	
+	public static TreeNode<Integer> findSecondLargest(TreeNode<Integer> root){
+
+        // If the root is null or there are no children, there is no second largest element
+        if (root == null || root.children.size() == 0) {
+            return null;
+        }
+
+        // Queue for level order traversal
+        Queue<TreeNode<Integer>> queue = new LinkedList<>();
+        queue.add(root);
+
+        // Initialize first largest and second largest
+        TreeNode<Integer> fl = root; // First largest
+        TreeNode<Integer> sl = null; // Second largest
+
+        // Perform level order traversal
+        while (!queue.isEmpty()) {
+            TreeNode<Integer> frontNode = queue.poll();
+
+            // Add the children of the current node to the queue
+            for (TreeNode<Integer> child : frontNode.children) {
+                queue.add(child);
+            }
+
+            // Update first largest (fl) and second largest (sl)
+            if (frontNode.data > fl.data) {
+                sl = fl; // Second largest becomes the previous largest
+                fl = frontNode; // First largest is now the current node
+            } else if (sl == null || frontNode.data > sl.data) {
+                // Update second largest only if it's smaller than fl and larger than the current sl
+                if (frontNode.data != fl.data) {
+                    sl = frontNode;
+                }
+            }
+        }
+
+        return sl; // Return the second largest node
+	}
+	
+	
+}
