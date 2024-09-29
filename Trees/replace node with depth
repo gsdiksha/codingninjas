@@ -1,0 +1,41 @@
+
+public class Solution {
+
+/*	TreeNode structure 
+ * 
+ * class TreeNode<T> {
+		T data;
+		ArrayList<TreeNode<T>> children;
+
+		TreeNode(T data){
+			this.data = data;
+			children = new ArrayList<TreeNode<T>>();
+		}
+	}*/
+	
+    // Helper method to replace the value of each node with its depth
+    private static void replaceWithDepth(TreeNode<Integer> node, int depth) {
+        // Base case: If node is null, return
+        if (node == null) {
+            return;
+        }
+
+        // Replace the current node's data with its depth
+        node.data = depth;
+
+        // Recur for each child node and increase depth by 1
+        for (TreeNode<Integer> child : node.children) {
+            replaceWithDepth(child, depth + 1);
+        }
+    }
+
+	public static void replaceWithDepthValue(TreeNode<Integer> root){
+
+		// Write your code here
+		// Start the replacement process with depth 0 at the root
+        replaceWithDepth(root, 0);
+		
+	}
+	
+	
+}
