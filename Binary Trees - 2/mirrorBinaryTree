@@ -1,0 +1,38 @@
+/*
+	
+	Following is the structure used to represent the Binary Tree Node
+
+	class BinaryTreeNode<T> {
+		T data;
+		BinaryTreeNode<T> left;
+		BinaryTreeNode<T> right;
+
+		public BinaryTreeNode(T data) {
+			this.data = data;
+			this.left = null;
+			this.right = null;
+		}
+	}
+
+*/
+
+public class Solution {
+
+	public static void mirrorBinaryTree(BinaryTreeNode<Integer> root){
+		//Your code goes here
+		// Base case: if the node is null, return
+		if (root == null) {
+			return;
+		}
+		
+		// Swap the left and right children
+		BinaryTreeNode<Integer> temp = root.left;
+		root.left = root.right;
+		root.right = temp;
+		
+		// Recursively mirror the left and right subtrees
+		mirrorBinaryTree(root.left);
+		mirrorBinaryTree(root.right);
+	}
+	
+}
