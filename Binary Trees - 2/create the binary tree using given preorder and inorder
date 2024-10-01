@@ -1,6 +1,10 @@
 catch yha h ki - prestart , instart, inend ka index pta krna
 preorder - root left right
 inorder - left root right
+Explanation:
+The current preStart points to the root of the current subtree (in the preOrder array).
+The left subtree is represented by the elements between inStart and inIndex - 1 in the inOrder array. The number of elements in the left subtree is inIndex - inStart.
+The right subtree starts immediately after the left subtree in the preOrder array. Therefore, to get the starting index for the right subtree in the preOrder array, we add inIndex - inStart + 1 to preStart. This skips over the root and the entire left subtree.
 
 
 /*
