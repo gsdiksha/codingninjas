@@ -1,0 +1,55 @@
+catch yha h ki - prestart , instart, inend ka index pta krna
+preorder - root left right
+inorder - left root right
+
+
+/*
+	
+	Following is the structure used to represent the Binary Tree Node
+
+	class BinaryTreeNode<T> {
+		T data;
+		BinaryTreeNode<T> left;
+		BinaryTreeNode<T> right;
+
+		public BinaryTreeNode(T data) {
+			this.data = data;
+			this.left = null;
+			this.right = null;
+		}
+	}
+
+*/
+
+public class Solution {
+
+    public static BinaryTreeNode<Integer> buildTree(int[] preOrder, int[] inOrder) {
+        return buildTreeHelper(preOrder, inOrder, 0, 0, inOrder.length - 1);
+    }
+
+    private static BinaryTreeNode<Integer> buildTreeHelper(int[] preOrder, int[] inOrder, int preStart, int inStart, int inEnd) {
+        // Base case: if no elements are left to process
+        if (preStart > preOrder.length - 1 || inStart > inEnd) {
+            return null;
+        }
+
+        // The first element of preOrder is the root of the subtree
+        int rootValue = preOrder[preStart];
+        BinaryTreeNode<Integer> root = new BinaryTreeNode<>(rootValue);
+
+        // Find the index of the root value in inOrder array
+        int inIndex = 0;
+        for (int i = inStart; i <= inEnd; i++) {
+            if (inOrder[i] == rootValue) {
+                inIndex = i;
+                break;
+            }
+        }
+
+        // Recursively build the left and right subtrees
+        root.left = buildTreeHelper(preOrder, inOrder, preStart + 1, inStart, inIndex - 1);
+        root.right = buildTreeHelper(preOrder, inOrder, preStart + inIndex - inStart + 1, inIndex + 1, inEnd);
+
+        return root;
+    }
+}
