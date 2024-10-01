@@ -1,0 +1,59 @@
+/*
+	
+	Following is the structure used to represent the Binary Tree Node
+
+	class BinaryTreeNode<T> {
+		T data;
+		BinaryTreeNode<T> left;
+		BinaryTreeNode<T> right;
+
+		public BinaryTreeNode(T data) {
+			this.data = data;
+			this.left = null;
+			this.right = null;
+		}
+	}
+
+*/
+
+public class Solution {
+
+    public static BinaryTreeNode<Integer> buildTree(int[] postOrder, int[] inOrder) {
+        // Call the helper function to build the tree
+        return buildTreeHelper(postOrder, 0, postOrder.length - 1, inOrder, 0, inOrder.length - 1);
+    }
+
+    private static BinaryTreeNode<Integer> buildTreeHelper(int[] postOrder, int postStart, int postEnd,
+                                                           int[] inOrder, int inStart, int inEnd) {
+        // Base case: if there are no elements left
+        if (postStart > postEnd || inStart > inEnd) {
+            return null;
+        }
+
+        // The root is the last element in the current postOrder segment
+        int rootValue = postOrder[postEnd];
+        BinaryTreeNode<Integer> root = new BinaryTreeNode<>(rootValue);
+
+        // Find the index of the root in the inOrder array (linear search)
+        int inIndex = inStart;
+        for (int i = inStart; i <= inEnd; i++) {
+            if (inOrder[i] == rootValue) {
+                inIndex = i;
+                break;
+            }
+        }
+
+        // Number of elements in the left subtree
+        int leftSubtreeSize = inIndex - inStart;
+
+        // Recursively build the left subtree
+        root.left = buildTreeHelper(postOrder, postStart, postStart + leftSubtreeSize - 1, 
+                                    inOrder, inStart, inIndex - 1);
+
+        // Recursively build the right subtree
+        root.right = buildTreeHelper(postOrder, postStart + leftSubtreeSize, postEnd - 1, 
+                                     inOrder, inIndex + 1, inEnd);
+
+        return root;
+    }
+}
