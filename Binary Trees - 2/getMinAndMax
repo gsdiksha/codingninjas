@@ -1,0 +1,79 @@
+/*
+	
+	Following is the structure used to represent the Binary Tree Node
+
+	class BinaryTreeNode<T> {
+		T data;
+		BinaryTreeNode<T> left;
+		BinaryTreeNode<T> right;
+
+		public BinaryTreeNode(T data) {
+			this.data = data;
+			this.left = null;
+			this.right = null;
+		}
+	}
+
+*/
+
+
+
+/*
+
+	Representation of the Pair Class
+
+	class Pair<T, U> {
+		T minimum;
+		U maximum;
+
+		public Pair(T minimum, U maximum) {
+			this.minimum = minimum;
+			this.maximum = maximum;
+		}
+
+	}
+
+*/
+
+public class Solution {
+
+	public static Pair<Integer, Integer> getMinAndMax(BinaryTreeNode<Integer> root) {
+		//Your code goes here
+		// If the tree is empty, we cannot find min or max values, so we return null
+        if (root == null) {
+            return new Pair<>(null, null);
+        }
+
+        // Initialize min and max to the root's data
+        int[] minMax = new int[] { root.data, root.data };
+
+        // Helper function to recursively find the min and max
+        findMinMax(root, minMax);
+
+        // Return the results as a Pair
+        return new Pair<>(minMax[0], minMax[1]);
+		
+	}
+
+	private static void findMinMax(BinaryTreeNode<Integer> node, int[] minMax) {
+        // If node is null, return
+        if (node == null) {
+            return;
+        }
+
+        // Update min if current node's data is smaller
+        if (node.data < minMax[0]) {
+            minMax[0] = node.data;
+        }
+
+        // Update max if current node's data is larger
+        if (node.data > minMax[1]) {
+            minMax[1] = node.data;
+        }
+
+        // Recursively traverse the left and right subtrees
+        findMinMax(node.left, minMax);
+        findMinMax(node.right, minMax);
+    }
+	
+}
