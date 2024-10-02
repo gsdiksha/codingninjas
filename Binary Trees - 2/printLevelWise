@@ -1,0 +1,65 @@
+import java.util.LinkedList;
+import java.util.Queue;
+/*
+	
+	Following is the structure used to represent the Binary Tree Node
+
+	class BinaryTreeNode<T> {
+		T data;
+		BinaryTreeNode<T> left;
+		BinaryTreeNode<T> right;
+
+		public BinaryTreeNode(T data) {
+			this.data = data;
+			this.left = null;
+			this.right = null;
+		}
+	}
+
+*/
+
+public class Solution {
+
+	public static void printLevelWise(BinaryTreeNode<Integer> root) {
+		//Your code goes here
+		// Base case: If the tree is empty, return
+        if (root == null) {
+            return;
+        }
+        
+        // Queue for level-order traversal
+        Queue<BinaryTreeNode<Integer>> queue = new LinkedList<>();
+        
+        // Enqueue the root node
+        queue.add(root);
+        
+        // While there are nodes to process
+        while (!queue.isEmpty()) {
+            // Get the number of nodes at the current level
+            int levelSize = queue.size();
+            
+            // Process all nodes at the current level
+            for (int i = 0; i < levelSize; i++) {
+                // Dequeue the front node
+                BinaryTreeNode<Integer> currentNode = queue.poll();
+                
+                // Print the current node's data
+                System.out.print(currentNode.data + " ");
+                
+                // Enqueue the left child if it exists
+                if (currentNode.left != null) {
+                    queue.add(currentNode.left);
+                }
+                
+                // Enqueue the right child if it exists
+                if (currentNode.right != null) {
+                    queue.add(currentNode.right);
+                }
+            }
+            
+            // After finishing the current level, print a new line
+            System.out.println();
+		}
+	}
+	
+}
