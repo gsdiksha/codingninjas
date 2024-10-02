@@ -1,0 +1,45 @@
+/*
+	
+	Following is the structure used to represent the Binary Tree Node
+
+	class BinaryTreeNode<T> {
+		T data;
+		BinaryTreeNode<T> left;
+		BinaryTreeNode<T> right;
+
+		public BinaryTreeNode(T data) {
+			this.data = data;
+			this.left = null;
+			this.right = null;
+		}
+	}
+
+*/
+
+public class Solution {
+
+	public static void insertDuplicateNode(BinaryTreeNode<Integer> root) {
+		//Your code goes here
+		// Base case: If root is null, return
+        if (root == null) {
+            return;
+        }
+        
+        // Step 1: Create a duplicate node for the current root
+        BinaryTreeNode<Integer> duplicate = new BinaryTreeNode<>(root.data);
+        
+        // Step 2: Store the original left child
+        BinaryTreeNode<Integer> originalLeft = root.left;
+        
+        // Step 3: Make the duplicate node the new left child of the root
+        root.left = duplicate;
+        
+        // Step 4: Set the original left child as the left child of the duplicate node
+        duplicate.left = originalLeft;
+        
+        // Step 5: Recur for the left and right subtrees
+        insertDuplicateNode(originalLeft);  // Left subtree of the original node
+        insertDuplicateNode(root.right);    // Right subtree of the original node
+	}
+	
+}
