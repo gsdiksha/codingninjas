@@ -1,0 +1,52 @@
+Handling element - k:
+In the above code, we effectively count the element - k cases by ensuring we check both sides during the first iteration:
+
+Counting element + k: When we encounter an element, we only check if element + k exists in the map. This avoids double-counting pairs like (a, b) and (b, a) since, for example, when we check a + k, we cover both (a, b) and (b, a) symmetrically.
+Why We Don’t Need to Explicitly Check element - k:
+When iterating over the map keys:
+
+If we're at element = a, checking element + k means we're finding pairs (a, a + k).
+When we later encounter a + k, the pair (a + k, a) is symmetrically found via the previous check.
+This ensures that all pairs are counted without double-counting.
+Summary:
+If k == 0, we count pairs of identical elements.
+If k > 0, we only check element + k to avoid counting the same pair twice.
+
+
+
+
+import java.util.HashMap;
+
+public class Solution {
+
+    public static int getPairsWithDifferenceK(int arr[], int k) {
+        // Create a HashMap to store the frequency of each element
+        HashMap<Integer, Integer> map = new HashMap<>();
+        int count = 0;
+        
+        // Fill the map with frequencies of each element
+        for (int i = 0; i < arr.length; i++) {
+            int element = arr[i];
+            map.put(element, map.getOrDefault(element, 0) + 1);
+        }
+        
+        // If k == 0, we are looking for pairs of identical elements
+        if (k == 0) {
+            for (int frequency : map.values()) {
+                if (frequency > 1) {
+                    // For each element, the number of ways to choose 2 from frequency is C(frequency, 2)
+                    count += (frequency * (frequency - 1)) / 2;
+                }
+            }
+        } else {
+            // Iterate through the map to count pairs with difference K
+            for (int element : map.keySet()) {
+                if (map.containsKey(element + k)) {
+                    count += map.get(element) * map.get(element + k);
+                }
+            }
+        }
+
+        return count;
+    }
+}
