@@ -1,0 +1,54 @@
+import java.util.HashMap;
+import java.util.ArrayList;
+
+public class Solution {
+    public static ArrayList<Integer> longestConsecutiveIncreasingSequence(int[] arr) {
+        HashMap<Integer, Boolean> map = new HashMap<>();
+        
+        // Mark all elements as true in the map, indicating they exist.
+        for (int x : arr) {
+            map.put(x, true);
+        }
+
+        int maxLength = 0;
+        int maxSeqStart = -1;
+        int maxSeqEnd = -1;
+        int startIndex = Integer.MAX_VALUE; // To track the index of the first element of the sequence
+
+        // Iterate over the array to find the longest consecutive sequence.
+        for (int i = 0; i < arr.length; i++) {
+            int currentElement = arr[i];
+
+            // If current element is the start of a sequence
+            if (!map.containsKey(currentElement - 1)) {
+                int count = 1;
+                int smallest = currentElement;
+                int largest = currentElement;
+
+                // Expand forward to find the length of the sequence
+                int next = currentElement + 1;
+                while (map.containsKey(next)) {
+                    count++;
+                    largest = next;
+                    next++;
+                }
+
+                // Update maxLength, maxSeqStart, and maxSeqEnd if needed
+                if (count > maxLength || (count == maxLength && i < startIndex)) {
+                    maxLength = count;
+                    maxSeqStart = smallest;
+                    maxSeqEnd = largest;
+                    startIndex = i; // Update with the index of the current sequence's start
+                }
+            }
+        }
+
+        // Prepare the result
+        ArrayList<Integer> result = new ArrayList<>();
+        result.add(maxSeqStart); // Start of the sequence
+        if (maxSeqStart != maxSeqEnd) {
+            result.add(maxSeqEnd); // End of the sequence if there's more than 1 element
+        }
+        return result;
+    }
+}
