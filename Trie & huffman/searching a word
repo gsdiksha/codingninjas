@@ -37,6 +37,7 @@ public class Trie {
     TrieNode child = root.children[childIndex];
 
     // If the child node does not exist, the word is not present
+    //hm yha check krre h ki child(array) usme is index pr value h ki nhi, agr nhi h vale to false wrna aage aur check kro for complete word
     if (child == null) {
         return false;
     }
