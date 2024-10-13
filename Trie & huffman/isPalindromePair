@@ -1,0 +1,191 @@
+Let's walk through the detailed explanation of how the method works with the input ["abcm", "cba"] to find whether they form a palindrome pair.
+
+Input
+Words: "abcm", "cba"
+
+Step 1: Adding Reverse Words to the Trie
+First, we add the reverse of each word in the list to the trie. This allows us to efficiently check if any word in the original list matches a reverse prefix of any other word.
+Reverse of "abcm": "mcba"
+We insert "mcba" into the trie character by character.
+Reverse of "cba": "abc"
+We insert "abc" into the trie character by character.
+After inserting both, the trie structure looks like this:
+
+css
+Copy code
+(root)
+   ├── m
+   │    └── c
+   │        └── b
+   │            └── a (terminating)
+   └── a
+        └── b
+            └── c (terminating)
+Step 2: Checking Each Word in the Original List
+Now, we traverse each word in the list ("abcm" and "cba") and check if it can form a palindrome pair using the trie.
+
+Checking "abcm"
+Start at the root of the trie.
+
+Traverse character by character through the trie using the characters of "abcm":
+
+Character 'a': We find 'a' as a child of the root.
+Character 'b': We find 'b' as a child of 'a'.
+Character 'c': We find 'c' as a child of 'b'.
+Character 'm': There's no child 'm' under 'c' in the trie.
+At this point, we've traversed the entire word "abcm", but we didn't find a match for 'm'. The search stops here, and no full match is found in the trie.
+
+Check Remaining Suffix:
+
+The search stopped after the prefix "abc" matched in the trie. The remaining suffix is "m".
+We check if "m" is a palindrome. Since "m" is a single character, it is indeed a palindrome.
+Additionally, the trie node where "abc" ended is terminating (from when we inserted the reverse "abc"), indicating that "cba" exists in the original list.
+Conclusion: We have found a palindrome pair: "abcm" + "cba" forms "abcba", which is a palindrome.
+
+Checking "cba"
+Next, we check "cba" following the same procedure.
+
+Start at the root of the trie.
+Traverse character by character through the trie using the characters of "cba":
+Character 'c': No child 'c' exists directly under the root.
+Since there is no match, we move on. The search for "cba" does not result in any palindrome pair when considered alone.
+
+Final Result
+Based on the traversal and checks:
+
+The word "abcm" forms a palindrome pair with "cba".
+Therefore, the function returns true.
+Summary
+The trie stores the reversed versions of the words. By searching for each word in the trie and checking for partial matches or remaining palindromic suffixes, we efficiently determine if any two words can form a palindrome pair.
+In this case, "abcm" and "cba" combine to form a palindrome ("abcba").
+
+
+
+import java.util.ArrayList;
+
+class TrieNode {
+    char data;
+    boolean isTerminating;
+    TrieNode children[];
+
+    public TrieNode(char data) {
+        this.data = data;
+        isTerminating = false;
+        children = new TrieNode[26];
+    }
+}
+
+public class Trie {
+
+    private TrieNode root;
+
+    public Trie() {
+        root = new TrieNode('\0');
+    }
+
+    private void add(TrieNode root, String word) {
+        if (word.length() == 0) {
+            root.isTerminating = true;
+            return;
+        }
+
+        int childIndex = word.charAt(0) - 'a';
+        TrieNode child = root.children[childIndex];
+
+        if (child == null) {
+            child = new TrieNode(word.charAt(0));
+            root.children[childIndex] = child;
+        }
+
+        add(child, word.substring(1));
+    }
+
+    public void add(String word) {
+        add(root, word);
+    }
+
+    private TrieNode searchNode(TrieNode root, String word) {
+        if (word.length() == 0) {
+            return root;
+        }
+
+        int childIndex = word.charAt(0) - 'a';
+        TrieNode child = root.children[childIndex];
+
+        if (child == null) {
+            return null;
+        }
+
+        return searchNode(child, word.substring(1));
+    }
+
+    private boolean isPalindrome(String word) {
+        int i = 0, j = word.length() - 1;
+        while (i < j) {
+            if (word.charAt(i) != word.charAt(j)) {
+                return false;
+            }
+            i++;
+            j--;
+        }
+        return true;
+    }
+
+    public boolean isPalindromePair(ArrayList<String> words) {
+        // Add reversed words to the Trie
+        for (String word : words) {
+            add(new StringBuilder(word).reverse().toString());
+        }
+
+        // Check each word in the original list
+        for (String word : words) {
+            TrieNode node = root;
+            for (int i = 0; i < word.length(); i++) {
+                // If the current node is terminating, check if the rest of the word is a palindrome
+                if (node.isTerminating && isPalindrome(word.substring(i))) {
+                    return true;
+                }
+
+                // Move to the next character in the trie
+                int childIndex = word.charAt(i) - 'a';
+                node = node.children[childIndex];
+
+                // If no further match, break
+                if (node == null) {
+                    break;
+                }
+            }
+
+            // If we reach the end of the word in the trie, check for any remaining characters in the trie forming a palindrome
+            if (node != null) {
+                if (node.isTerminating) {
+                    return true;
+                }
+
+                // Check if any suffix remaining in the trie is a palindrome
+                return hasPalindromeSuffix(node, "");
+            }
+        }
+
+        return false;
+    }
+
+    private boolean hasPalindromeSuffix(TrieNode node, String path) {
+        // If the node itself is terminating and the path forms a palindrome, return true
+        if (node.isTerminating && isPalindrome(path)) {
+            return true;
+        }
+
+        // Check recursively for each child
+        for (int i = 0; i < 26; i++) {
+            TrieNode child = node.children[i];
+            if (child != null) {
+                char nextChar = (char) ('a' + i);
+                if (hasPalindromeSuffix(child, path + nextChar)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+}
